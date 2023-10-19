@@ -9,7 +9,7 @@ export const metadata = {
 const Participate = () => {
 
     return (
-        <Flex color={'white'}>Participate</Flex>
+        <Flex color={'white'}  style={{flex: 1}}>Participate</Flex>
     )
 }
 

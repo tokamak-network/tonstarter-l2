@@ -23,7 +23,7 @@ const styles = {
     "html, body": {
       color: mode("#191919","#fff")(props),
       bg: mode( "#fff","#191919")(props),
-      fontFamily:'Open Sans, sans-serif'
+      fontFamily:'Open Sans, sans-serif',
     },
   }),
 };

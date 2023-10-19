@@ -200,8 +200,9 @@ const Header = () => {
           fontFamily={theme.fonts.openSans}
           fontWeight={600}
           cursor={"pointer"}
-          color={"theme.colors.white.100"}>
-          TOSv2
+          color={"theme.colors.white.100"}
+          onClick={() => router.push('/participate')}>
+          Participate
         </Text>
         <Text
           mr={"50px"}
@@ -209,8 +210,9 @@ const Header = () => {
           fontWeight={600}
           cursor={"pointer"}
           color={"theme.colors.white.100"}>
-          Participate
+          TOSv2
         </Text>
+      
         <Menu onClose={() => handleMenuToggle(1)} isOpen={menuStates[1]}>
           <MenuButton
             as={Center}

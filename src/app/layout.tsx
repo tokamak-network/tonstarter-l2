@@ -6,7 +6,7 @@ import Header from "@/components/global/Header";
 import Footer from "@/components/global/Footer";
 import { WagmiProviders } from "@/providers/wagmiProvider";
 import { RecoilRoot } from "recoil";
-
+import { Flex } from "@chakra-ui/react";
 export const HeadMeta = () => {
   return (
     <head>
@@ -40,13 +40,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <HeadMeta/>
-      <body>
+      <body style={{minHeight: '100vh'}}>
       <RecoilRoot>
         <Providers>
         <WagmiProviders>
+          <Flex flexDir={'column'} minH={'100vh'}>
           <Header />
           {children}
           <Footer />
+          </Flex>
+        
           </WagmiProviders>
         </Providers>
         </RecoilRoot>
