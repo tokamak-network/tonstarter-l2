@@ -16,6 +16,8 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/open-sans": "^5.0.15",
     "@fontsource/titillium-web": "^5.0.15",
+    "date-fns": "^2.30.0",
+    "dayjs": "^1.11.10",
     "framer-motion": "^10.16.4",
     "next": "13.5.5",
     "react": "^18",
