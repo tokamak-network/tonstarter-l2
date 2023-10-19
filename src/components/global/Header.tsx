@@ -8,6 +8,7 @@ import {
   MenuButton,
   Menu,
   MenuList,
+  Box,
 } from "@chakra-ui/react";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
@@ -20,32 +21,35 @@ import { ThemeSwitcher } from "./ThemeSwithcer";
 import Account from "./Account";
 import Network from "./Network";
 
-const HeaderMenu = (props: {
-  title: string;
-  link: string;
-  menuState: boolean;
-}) => {
-  const { title, link, menuState } = props;
-  const pathname = usePathname();
+const CustomMenuItemInternal = (props: { link: string; title: string}) => {
+  const { link, title } = props;
+  const [hover, setHover] = useState(false);
   const router = useRouter();
 
   return (
-    <Center
-      fontSize={16}
-      cursor={"pointer"}
-      color={"white"}
-      // borderBottom={
-      //   !menuState && pathname?.split("/")[1] === link.replaceAll("/", "")
-      //     ? "3px solid #007AFF"
-      //     : ""
-      // }
-      onClick={() => router.push(link)}>
-      <Text>{title}</Text>
-    </Center>
+    <MenuItem
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+     onClick={() => router.push(link)}
+      h={"32px"}
+      //   marginBottom={"16px"}
+     px={'15px'}
+      bg="#191919"
+      color={"#f3f4f1"}
+      fontSize={"13px"}
+      _focus={{ background: "#191919" }}
+      _hover={{ bg: "none", color: "#0070ED" }}>
+      <Text
+        fontSize={
+          '13px'
+        }>
+        {title}
+      </Text>
+    </MenuItem>
   );
-};
+}
 
-const CustomMenuItem = (props: { link: string; title: string }) => {
+const CustomMenuItem = (props: { link: string; title: string}) => {
   const { link, title } = props;
   const [hover, setHover] = useState(false);
   return (
@@ -58,7 +62,6 @@ const CustomMenuItem = (props: { link: string; title: string }) => {
       h={"32px"}
       //   marginBottom={"16px"}
       padding={"0px"}
-      //   border={"1px solid red"}
       bg="#191919"
       color={"#f3f4f1"}
       fontSize={"13px"}
@@ -77,7 +80,10 @@ const Header = () => {
   const [menuStates, setMenuStates] = useState([false, false, false]);
   const { colorMode } = useColorMode();
   const router = useRouter();
+  const pathname = usePathname();
 
+  console.log('pathname',pathname?.split("/")[1]);
+  
   const handleMenuToggle = (index: number) => {
     const updatedMenuStates = [...menuStates];
 
@@ -150,7 +156,7 @@ const Header = () => {
             display={"flex"}
             flexDir={"row"}>
             <Flex mr="24px">
-              <Text fontFamily={theme.fonts.openSans} fontWeight={600}>
+              <Text fontFamily={theme.fonts.openSans} fontWeight={600} color={pathname?.split("/")[1] === 'launch'?'#0070ED' :'#FFFFFF'}>
                 Launch
               </Text>
               <Flex
@@ -170,6 +176,7 @@ const Header = () => {
           <MenuList
             onMouseLeave={() => handleMenuToggle(0)}
             bg="#191919"
+            
             mt={"28px"}
             marginLeft={"-63px"}
             border={"1px solid #373737"}
@@ -178,20 +185,29 @@ const Header = () => {
               minWidth: "190px",
               paddingTop: "10px",
               paddingBottom: "10px",
-              paddingLeft: "15px",
-              paddingRight: "15px",
+             
+              borderRadius: '4px'
             }}>
-            <CustomMenuItem
-              link="https://tokamaknetwork.gitbook.io/home/02-service-guide/tokamak-bridge"
-              title="Runway"
-            />
-            <CustomMenuItem
-              link="https://forms.gle/GLY1PZq4BH4RqZY79"
+            <CustomMenuItemInternal
+              link="/launch/fast"
               title="Fast launch"
             />
-            <CustomMenuItem
-              link="https://forms.gle/GLY1PZq4BH4RqZY79"
+            <CustomMenuItemInternal
+              link="/launch/custom"
               title="Custom launch"
+            />
+            <Flex alignItems={'center'} justifyContent={'space-between'} h='29px'>
+            <Box w={"9px"} h={"1px"} bgColor={"#373737"} />
+            <Text maxW={'45px'} color={'#818181'} fontWeight={400} fontSize={11} textAlign={"center"}>
+             Optional
+            </Text>
+            <Box w={"120px"} h={"1px"} bgColor={"#373737"} />
+
+            </Flex>
+          
+            <CustomMenuItemInternal
+              link="/launch/runway"
+              title="Runway"
             />
           </MenuList>
         </Menu>
@@ -200,7 +216,7 @@ const Header = () => {
           fontFamily={theme.fonts.openSans}
           fontWeight={600}
           cursor={"pointer"}
-          color={"theme.colors.white.100"}
+          color={pathname?.split("/")[1] === 'participate'?'#0070ED' :'#FFFFFF'}
           onClick={() => router.push('/participate')}>
           Participate
         </Text>
@@ -257,6 +273,7 @@ const Header = () => {
               paddingBottom: "10px",
               paddingLeft: "15px",
               paddingRight: "15px",
+              borderRadius: '4px'
             }}>
             <CustomMenuItem
               link="https://tokamaknetwork.gitbook.io/home/02-service-guide/tokamak-bridge"
@@ -312,6 +329,7 @@ const Header = () => {
               paddingBottom: "10px",
               paddingLeft: "15px",
               paddingRight: "15px",
+              borderRadius: '4px'
             }}>
             <CustomMenuItem
               link="https://tokamaknetwork.gitbook.io/home/02-service-guide/tokamak-bridge"

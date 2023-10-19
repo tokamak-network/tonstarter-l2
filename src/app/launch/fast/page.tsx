@@ -6,11 +6,11 @@ export const metadata = {
     description: 'tonstarter l2 - launch'
 }
 
-const Launch = () => {
+const Fast = () => {
 
     return (
-        <Flex color={'white'}>Launch</Flex>
+        <Flex color={'white'}  style={{flex: 1}}>fast</Flex>
     )
 }
 
-export default Launch
+export default Fast
