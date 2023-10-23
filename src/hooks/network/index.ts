@@ -58,9 +58,6 @@ export default function useConnectedNetwork() {
     return { chainName: "MAINNET" as keyof typeof SupportedChainId };
   }, [chain, connectedNetwork]);
 
-  // console.log("inNetwork");
-  // console.log(inNetwork);
-
   const otherLayerChainInfo = useMemo(() => {
     if (chainInfo) {
       if (chainInfo.layer === "L1" && chainInfo.isConnectedToMainNetwork)

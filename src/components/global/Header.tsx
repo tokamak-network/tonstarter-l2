@@ -81,8 +81,6 @@ const Header = () => {
   const { colorMode } = useColorMode();
   const router = useRouter();
   const pathname = usePathname();
-
-  console.log('pathname',pathname?.split("/")[1]);
   
   const handleMenuToggle = (index: number) => {
     const updatedMenuStates = [...menuStates];
@@ -176,7 +174,7 @@ const Header = () => {
           <MenuList
             onMouseLeave={() => handleMenuToggle(0)}
             bg="#191919"
-            
+            zIndex={10000}
             mt={"28px"}
             marginLeft={"-63px"}
             border={"1px solid #373737"}
@@ -185,8 +183,8 @@ const Header = () => {
               minWidth: "190px",
               paddingTop: "10px",
               paddingBottom: "10px",
-             
-              borderRadius: '4px'
+            
+              borderRadius: '4px',
             }}>
             <CustomMenuItemInternal
               link="/launch/fast"

@@ -7,6 +7,7 @@ import Footer from "@/components/global/Footer";
 import { WagmiProviders } from "@/providers/wagmiProvider";
 import { RecoilRoot } from "recoil";
 import { Flex } from "@chakra-ui/react";
+// import './globals.css'
 export const HeadMeta = () => {
   return (
     <head>

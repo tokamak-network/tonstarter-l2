@@ -5,6 +5,7 @@ import { trimAddress } from "@/utils";
 import { theme } from "@/theme";
 import "@fontsource/titillium-web";
 import useConnectWallet from "@/hooks/account/useConnectWallet";
+
 const Account = () => {
   const { isConnected, address } = useAccount();
   const buttonText = isConnected ? trimAddress({ address }) : "Connect Wallet";
