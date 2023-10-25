@@ -33,7 +33,7 @@ const CarouselSlide = (props: {
         </Text>
 
         <Text
-          whiteSpace={"normal"}
+          whiteSpace={'pre'}
           fontSize={"16px"}
           color={"#9d9ea5"}
           letterSpacing={"0.32px"}

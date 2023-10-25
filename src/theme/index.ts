@@ -25,6 +25,20 @@ const styles = {
       bg: mode( "#fff","#191919")(props),
       fontFamily:'Open Sans, sans-serif',
     },
+    button: {
+      bg: 'transparent',
+      border:'none',
+      boxShadow: 'none !important',
+      _hover: {
+        bg: 'transparent',
+        border:'none',
+        boxShadow: 'none !important',
+      }
+    },
+    '.css-1i469j7' : {
+      backgroundColor: "#0070ED !important",
+      padding: '0px !important'
+    }
   }),
 };
 

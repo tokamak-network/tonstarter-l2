@@ -9,3 +9,4 @@ export const networkStatus = atom<InNetwork>({
     connectedNetwork: null,
   },
 });
+
