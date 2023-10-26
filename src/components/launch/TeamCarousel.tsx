@@ -1,65 +1,47 @@
-"use client";
-import { Flex, Text } from "@chakra-ui/react";
-import CarouselSlide from "./CarouselSlide";
+import {
+  Flex,
+  NumberInput,
+  Text,
+  NumberInputField,
+  Input,
+} from "@chakra-ui/react";
 import { useState } from "react";
+import "font-proxima-nova/style.css";
+import UserGuide from "../common/UserGuide";
 const TeamCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const items = [
+  const questions = [
     {
-      title: "Runway",
-      subtitle: "Optional",
-      description:
-        "Instead of jumping straight into the launch phase, it's a good \nidea to start with the runway phase. This will help you attract \nmore potential investors for your next launch phase by \nshowing how much preparation you've done",
+      question: "What’s your project name?",
+      value: "",
+      placeholder: "Project name",
     },
     {
-      title: "Launch",
-      subtitle: "",
-      description:
-        "On the Titan Network, \nLaunch faster and easier with lower fees!",
+      question: "What’s your project token symbol?",
+      value: "",
+      placeholder: "",
+    },
+    { question: "What’s your token name?", value: "", placeholder: "" },
+    {
+      question: "Enter the URL of the token symbol image",
+      value: "",
+      placeholder: "",
+      optional: true,
     },
     {
-      title: "Fly",
-      subtitle: "",
-      description:
-        "Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit, sed do eiusmod  \ntempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, ",
+      question: "Describe what your project is all about.",
+      value: "",
+      placeholder: "",
     },
-    {
-        title: "Runway",
-        subtitle: "Optional",
-        description:
-          "Instead of jumping straight into the launch phase, it's a good \nidea to start with the runway phase. This will help you attract \nmore potential investors for your next launch phase by \nshowing how much preparation you've done",
-      },
-      {
-        title: "Launch",
-        subtitle: "",
-        description:
-          "On the Titan Network, \nLaunch faster and easier with lower fees!",
-      },
-      {
-        title: "Fly",
-        subtitle: "",
-        description:
-          "Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit, sed do eiusmod  \ntempor incididunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, ",
-      },
+    { question: "Schedule your project", value: "", placeholder: "" },
   ];
-  const updateIndex = (newIndex: number) => {
-    if (newIndex < 0) {
-      newIndex = 0;
-    } else if (newIndex) {
-      newIndex >= 3;
-    }
-    {
-      newIndex = 2;
-    }
-  };
   return (
     <Flex
       flexDir={"row"}
       alignItems={"center"}
       w={"100%"}
       justifyContent={"space-between"}>
-    
       <Flex
         color={"white"}
         className="carousel"
@@ -73,13 +55,44 @@ const TeamCarousel = () => {
           transition={"transform 0.3s"}
           flexDir={"column"}
           style={{
-            transform:
-            `translate(0,${30*activeIndex}px)`
+            transform: `translate(0,${-30 * activeIndex}px)`,
           }}>
-          {items.map((item: any, index: number) => {
+          {questions.map((question: any, index: number) => {
             return (
-              <Flex key={index} onClick={() => setActiveIndex(index)}>
-                {index}
+              <Flex
+                w={"360px"}
+                key={index}
+                fontFamily={"Proxima Nova Rg"}
+                flexDir={"column"}
+                mr={"20px"}>
+                <Text
+                  fontSize={"21px"}
+                  fontWeight={700}
+                  lineHeight={"normal"}
+                  mb={"20px"}
+                  whiteSpace={"break-spaces"}
+                  color={"#D0D0DA"}>
+                  {index + 1}
+                  {". "}
+
+                  {question.question}
+                </Text>
+                <Input
+                  variant="flushed"
+                  w={"360px"}
+                  h={"51px"}
+                  _hover={{}}
+                  bg={"#252525"}
+                  borderRadius={0}
+                  _focusVisible={{
+                    borderBottom: "1px solid #0070ED !important",
+                  }}
+                  placeholder={question.placeholder}
+                  outline={"none"}
+                  border={"transparent"}
+                />
+
+                <UserGuide />
               </Flex>
             );
           })}
@@ -87,7 +100,7 @@ const TeamCarousel = () => {
       </Flex>
       <Flex className="carousel-buttons">
         <Flex className="indicators" flexDir={"column"}>
-          {items.map((item: any, index: number) => {
+          {questions.map((item: any, index: number) => {
             return (
               <Flex
                 key={index}
@@ -108,4 +121,3 @@ const TeamCarousel = () => {
 };
 
 export default TeamCarousel;
-

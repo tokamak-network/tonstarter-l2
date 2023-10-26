@@ -1,4 +1,5 @@
 import { Text, Flex } from "@chakra-ui/react";
+import EconomyCarousel from "./EconomyCarousel";
 import TeamCarousel from "./TeamCarousel";
 import { useState } from "react";
 import SetUp from "./SetUp";
@@ -14,7 +15,7 @@ const ProjectTeam = () => {
         fontWeight={600}>
         Project & Team
       </Text>
-      {setup ? <TeamCarousel /> : <SetUp />}
+      {setup ? <TeamCarousel /> : <SetUp  setSetup={setSetup}/>}
     </Flex>
   );
 };
