@@ -15,24 +15,28 @@ const TeamCarousel = () => {
     {
       question: "What’s your project name?",
       value: "",
-      placeholder: "Project name",
+      placeholder: "20 characters or less",
     },
     {
       question: "What’s your project token symbol?",
       value: "",
-      placeholder: "",
+      placeholder: "8 characters or less",
     },
-    { question: "What’s your token name?", value: "", placeholder: "" },
+    {
+      question: "What’s your token name?",
+      value: "",
+      placeholder: "8 characters or less",
+    },
     {
       question: "Enter the URL of the token symbol image",
       value: "",
-      placeholder: "",
+      placeholder: "Enter the URL here",
       optional: true,
     },
     {
       question: "Describe what your project is all about.",
       value: "",
-      placeholder: "",
+      placeholder: "Enter your project description here",
     },
     { question: "Schedule your project", value: "", placeholder: "" },
   ];
@@ -55,16 +59,19 @@ const TeamCarousel = () => {
           transition={"transform 0.3s"}
           flexDir={"column"}
           style={{
-            transform: `translate(0,${-30 * activeIndex}px)`,
+            transform: `translate(0,${-200 * activeIndex}px)`,
           }}>
           {questions.map((question: any, index: number) => {
+            console.log("index", index);
+
             return (
               <Flex
                 w={"360px"}
                 key={index}
                 fontFamily={"Proxima Nova Rg"}
                 flexDir={"column"}
-                mr={"20px"}>
+                mr={"20px"}
+                mb={"60px"}>
                 <Text
                   fontSize={"21px"}
                   fontWeight={700}
@@ -77,21 +84,69 @@ const TeamCarousel = () => {
 
                   {question.question}
                 </Text>
-                <Input
-                  variant="flushed"
-                  w={"360px"}
-                  h={"51px"}
-                  _hover={{}}
-                  bg={"#252525"}
-                  borderRadius={0}
-                  _focusVisible={{
-                    borderBottom: "1px solid #0070ED !important",
-                  }}
-                  placeholder={question.placeholder}
-                  outline={"none"}
-                  border={"transparent"}
-                />
-
+                {/* {index === 4 ? (
+                  <Input
+                    variant="flushed"
+                    w={"360px"}
+                    h={"151px"}
+                    _hover={{}}
+                    bg={"#252525"}
+                    borderRadius={0}
+                    _focusVisible={{
+                      borderBottom: "1px solid #0070ED !important",
+                    }}
+                    as={"textarea"}
+                    placeholder={question.placeholder}
+                    outline={"none"}
+                    fontSize={"18px"}
+                    fontWeight={600}
+                    border={"transparent"}
+                    pl={"20px"}
+                    pt={'15px'}
+                    _placeholder={{ opacity: 1, color: "#818181" }}
+                  />
+                ) : (
+                  <Input
+                    variant="flushed"
+                    w={"360px"}
+                    h={"51px"}
+                    _hover={{}}
+                    bg={"#252525"}
+                    borderRadius={0}
+                    _focusVisible={{
+                      borderBottom: "1px solid #0070ED !important",
+                    }}
+                    placeholder={question.placeholder}
+                    outline={"none"}
+                    fontSize={"18px"}
+                    fontWeight={600}
+                    border={"transparent"}
+                    pl={"20px"}
+                    _placeholder={{ opacity: 1, color: "#818181" }}
+                  />
+                )} */}
+                 <Input
+                    variant="flushed"
+                    w={"360px"}
+                    h={index === 4 ?"151px":'51px'}
+                    _hover={{}}
+                    bg={"#252525"}
+                    borderRadius={0}
+                    _focusVisible={{
+                      borderBottom: "1px solid #0070ED !important",
+                    }}
+                    as={index === 4 ?"textarea":'input'}
+                    placeholder={question.placeholder}
+                    outline={"none"}
+                    fontSize={"18px"}
+                    fontWeight={600}
+                    border={"transparent"}
+                    pl={"20px"}
+                    
+                    pt={index === 4 ?'15px':''}
+                    _placeholder={{ opacity: 1, color: "#818181", fontsize:'18px', lineHeight:'normal' }}
+                  />
+             
                 <UserGuide />
               </Flex>
             );
