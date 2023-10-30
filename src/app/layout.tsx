@@ -7,6 +7,7 @@ import Footer from "@/components/global/Footer";
 import { WagmiProviders } from "@/providers/wagmiProvider";
 import { RecoilRoot } from "recoil";
 import { Flex } from "@chakra-ui/react";
+import Modals from "@/components/modals";
 // import './globals.css'
 export const HeadMeta = () => {
   return (
@@ -49,6 +50,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <Modals/>
           </Flex>
         
           </WagmiProviders>

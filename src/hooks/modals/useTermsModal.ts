@@ -4,13 +4,17 @@ import { useRecoilState } from "recoil";
 
 export function useTermsModal() {
   const [termsModal, setTermsModal] = useRecoilState(termsStatus);
+    console.log('termsModal,termsModal',termsModal);
+    
   const onOpenTerms = useCallback(() => {
+    console.log('ggg');
+    
     setTermsModal(true);
-  }, [setTermsModal]);
+  }, [setTermsModal,termsModal]);
 
   const onClose = useCallback(() => {
     setTermsModal(false);
-  }, [setTermsModal]);
+  }, [setTermsModal,termsModal]);
 
   return {
     onOpenTerms,
