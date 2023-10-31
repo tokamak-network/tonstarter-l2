@@ -9,3 +9,8 @@ export const termsStatus = atom<boolean>({
   key: "termsStatus",
   default: false,
 });
+
+export const setUpStatus = atom<boolean>({
+  key: "setUpStatus",
+  default: false,
+});

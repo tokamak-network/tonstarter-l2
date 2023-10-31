@@ -5,9 +5,8 @@ import { useState, SetStateAction, Dispatch } from "react";
 import { useRouter } from "next/navigation";
 import { useTermsModal } from "@/hooks/modals/useTermsModal";
 
-const SetUp = (props: { setSetup: Dispatch<SetStateAction<any>> }) => {
+const SetUp = ( ) => {
   const router = useRouter();
-  const { setSetup } = props;
   const {onOpenTerms, onClose} = useTermsModal()
   return (
     <Flex flexDir={"column"} w="360px" mt={"21px"}>
@@ -34,6 +33,7 @@ const SetUp = (props: { setSetup: Dispatch<SetStateAction<any>> }) => {
           bg={"#0070ED"}
           color={"#fff"}
           fontWeight={600}
+          _disabled={{bg: '#353535', color:'#838383'}}
           _hover={{ bg: "#0057E6" }}
           onClick={() => onOpenTerms()}>
           Set up
@@ -48,7 +48,7 @@ const SetUp = (props: { setSetup: Dispatch<SetStateAction<any>> }) => {
           color={"#fff"}
           fontWeight={600}
           onClick={() => router.back()}
-          _hover={{ border: "1px solid #8A8A98" }}>
+          _hover={{bg:'transparent', border: '2px solid #8A8A98'}}>
           Back
         </Button>
       </Flex>

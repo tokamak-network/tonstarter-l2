@@ -3,9 +3,10 @@ import EconomyCarousel from "./EconomyCarousel";
 import TeamCarousel from "./TeamCarousel";
 import { useState } from "react";
 import SetUp from "./SetUp";
-
+import { setUpStatus } from "@/recoil/launch/atom";
+import { useRecoilValue } from "recoil";
 const ProjectTeam = () => {
-  const [setup, setSetup] = useState(false);
+  const setup = useRecoilValue(setUpStatus);
   return (
     <Flex flexDir={"column"}>
       <Text
@@ -15,7 +16,7 @@ const ProjectTeam = () => {
         fontWeight={600}>
         Project & Team
       </Text>
-      {setup ? <TeamCarousel /> : <SetUp  setSetup={setSetup}/>}
+      {setup ? <TeamCarousel /> : <SetUp />}
     </Flex>
   );
 };
