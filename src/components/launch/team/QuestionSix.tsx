@@ -5,6 +5,7 @@ import Select from "react-select";
 import { Overlay_Index } from "@/types/style/overlayIndex";
 import Image from "next/image";
 import BlueArrow from "@/assets/icons/blue_arrow.svg";
+import GrayArrow from "@/assets/icons/gray_arrow.svg";
 
 type SelectOption = {
   abbrev: string;
@@ -23,7 +24,9 @@ const QuestionSix = (props: { question: any }) => {
     { question: "Snapshot", placeholder: "Snapshot" },
     { question: "Whitelist", placeholder: "From", placeholder1: "To" },
   ];
-  const [selectedTimezone, setSelectedTimezone] = useState(undefined);
+  const [selectedTimezone, setSelectedTimezone] = useState<
+    SelectOption | undefined
+  >(undefined);
 
   const customStyles = (isOpen: boolean) => {
     return {
@@ -63,22 +66,25 @@ const QuestionSix = (props: { question: any }) => {
     setIsOpen: React.Dispatch<SetStateAction<boolean>>;
   }) => {
     const { selectedOption, isOpen, setIsOpen } = props;
-
     if (selectedOption) {
       return (
         <Flex
           justifyContent={"space-between"}
           alignItems={"center"}
+          onClick={() => setIsOpen(!isOpen)}
           fontSize={14}
-          borderRadius={"50%"}
-          onClick={() => setIsOpen(!isOpen)}>
-          <Flex
-            className="header-right-common"
-            w={"35px"}
-            justifyContent={"center"}
-            alignItems={"center"}
-            h={"35px"}
-            borderRadius={"50%"}></Flex>
+          width={"100%"}>
+          <Text
+            color={"#fff"}
+            whiteSpace={"nowrap"}
+            overflow={"hidden"}
+            textOverflow={"ellipsis"}
+            fontSize={"18px"}>
+            {selectedOption.label}
+          </Text>
+          <Flex transform={isOpen ? "" : "rotate(180deg)"}>
+            <Image src={isOpen ? BlueArrow : GrayArrow} alt="BlueArrow" />
+          </Flex>
         </Flex>
       );
     }
@@ -90,17 +96,20 @@ const QuestionSix = (props: { question: any }) => {
         width={"100%"}
         onClick={() => setIsOpen(!isOpen)}>
         <Text fontSize={"18px"}>Time zone selector</Text>
-        <Image src={BlueArrow} alt="BlueArrow" />
+        <Flex transform={isOpen ? "" : "rotate(180deg)"}>
+          <Image src={isOpen ? BlueArrow : GrayArrow} alt="BlueArrow" />
+        </Flex>
       </Flex>
     );
   };
 
   const QuestionOne = () => {
-    const [selectedOption, setSelectedOption] = useState<SelectOption | null>(
-      null
-    );
+    const [selectedOption, setSelectedOption] = useState<any | null>(null);
     const [isOpen, setIsOpen] = useState<boolean>(false);
-
+    const onChange = async (data: SelectOption) => {
+      setSelectedOption(data);
+      setIsOpen(false);
+    };
     const CustomOption = (props: { data: any }) => {
       const { data } = props;
       return (
@@ -115,6 +124,7 @@ const QuestionSix = (props: { question: any }) => {
           fontWeight={400}
           cursor={"pointer"}
           _hover={{ color: "#0070ED" }}
+          onClick={() => onChange(data)}
           color={"#fff"}>
           <Text
             whiteSpace={"nowrap"}
@@ -125,6 +135,7 @@ const QuestionSix = (props: { question: any }) => {
         </Flex>
       );
     };
+
     return (
       <Flex flexDir={"column"} ml={"30px"}>
         <Flex
@@ -196,7 +207,8 @@ const QuestionSix = (props: { question: any }) => {
             IndicatorsContainer: () => null,
           }}
           //@ts-ignore
-          styles={customStyles(isOpen)}></Select>
+          styles={customStyles(isOpen)}
+          value={selectedOption}></Select>
       </Flex>
     );
   };
