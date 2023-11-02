@@ -308,7 +308,7 @@ export default function Network() {
         value: chainInfo.chainId,
         label: chainInfo.chainName,
       };
-    });
+    });    
   return (
     // <Center className="header-right-common" w={"48px"} h={"48px"} _hover={{bg:'#313442'}}>
     //   <NetworkSymbol

@@ -2,6 +2,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 import CarouselSlide from "./CarouselSlide";
 import { useState } from "react";
+
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 

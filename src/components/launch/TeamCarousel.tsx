@@ -4,10 +4,16 @@ import {
   Text,
   NumberInputField,
   Input,
+  Button,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import "font-proxima-nova/style.css";
 import UserGuide from "../common/UserGuide";
+import activeArrow from "@/assets/icons/caret-down.png";
+import inactiveArrow from "@/assets/icons/caret-up.png";
+import Image from "next/image";
+import QuestionSix from "./team/QuestionSix";
+
 const TeamCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -40,6 +46,17 @@ const TeamCarousel = () => {
     },
     { question: "Schedule your project", value: "", placeholder: "" },
   ];
+
+  const updateIndex = (newIndex: number) => {
+    if (newIndex < 0) {
+      newIndex = 0;
+    } else if (newIndex >= questions.length) {
+      newIndex = questions.length - 1;
+    }
+
+    setActiveIndex(newIndex);
+  };
+
   return (
     <Flex
       flexDir={"row"}
@@ -59,98 +76,112 @@ const TeamCarousel = () => {
           transition={"transform 0.3s"}
           flexDir={"column"}
           style={{
-            transform: `translate(0,${-200 * activeIndex}px)`,
+            transform: `translate(0,${-10 * activeIndex}px)`,
           }}>
           {questions.map((question: any, index: number) => {
-            console.log("index", index);
+            if (activeIndex === index) {
+              if (index === 5) {
+                return <QuestionSix key={index} question={question} />;
+              }
+              return (
+                <Flex
+                  w={"360px"}
+                  key={index}
+                  fontFamily={"Proxima Nova Rg"}
+                  flexDir={"column"}
+                  mr={"20px"}
+                  mb={"60px"}>
+                  <Text
+                    fontSize={"21px"}
+                    fontWeight={700}
+                    lineHeight={"normal"}
+                    mb={"20px"}
+                    whiteSpace={"break-spaces"}
+                    color={"#D0D0DA"}>
+                    {index + 1}
+                    {". "}
+
+                    {question.question}
+                  </Text>
+
+                  <Input
+                    variant="flushed"
+                    w={"360px"}
+                    h={index === 4 ? "151px" : "51px"}
+                    _hover={{}}
+                    bg={"#252525"}
+                    borderRadius={0}
+                    _focusVisible={{
+                      borderBottom: "1px solid #0070ED !important",
+                    }}
+                    as={index === 4 ? "textarea" : "input"}
+                    placeholder={question.placeholder}
+                    outline={"none"}
+                    fontSize={"18px"}
+                    fontWeight={600}
+                    border={"transparent"}
+                    pl={"20px"}
+                    pt={index === 4 ? "15px" : ""}
+                    _placeholder={{
+                      opacity: 1,
+                      color: "#818181",
+                      fontsize: "18px",
+                      lineHeight: "normal",
+                    }}
+                  />
+
+                  <UserGuide />
+                </Flex>
+              );
+            }
 
             return (
-              <Flex
-                w={"360px"}
-                key={index}
-                fontFamily={"Proxima Nova Rg"}
-                flexDir={"column"}
-                mr={"20px"}
-                mb={"60px"}>
-                <Text
-                  fontSize={"21px"}
-                  fontWeight={700}
-                  lineHeight={"normal"}
-                  mb={"20px"}
-                  whiteSpace={"break-spaces"}
-                  color={"#D0D0DA"}>
-                  {index + 1}
-                  {". "}
-
-                  {question.question}
+              <Flex key={index}>
+                <Text color={"#353535"} fontWeight={700} fontSize={"15px"}>
+                  {index + 1} {". "} {question.question}
                 </Text>
-                {/* {index === 4 ? (
-                  <Input
-                    variant="flushed"
-                    w={"360px"}
-                    h={"151px"}
-                    _hover={{}}
-                    bg={"#252525"}
-                    borderRadius={0}
-                    _focusVisible={{
-                      borderBottom: "1px solid #0070ED !important",
-                    }}
-                    as={"textarea"}
-                    placeholder={question.placeholder}
-                    outline={"none"}
-                    fontSize={"18px"}
-                    fontWeight={600}
-                    border={"transparent"}
-                    pl={"20px"}
-                    pt={'15px'}
-                    _placeholder={{ opacity: 1, color: "#818181" }}
-                  />
-                ) : (
-                  <Input
-                    variant="flushed"
-                    w={"360px"}
-                    h={"51px"}
-                    _hover={{}}
-                    bg={"#252525"}
-                    borderRadius={0}
-                    _focusVisible={{
-                      borderBottom: "1px solid #0070ED !important",
-                    }}
-                    placeholder={question.placeholder}
-                    outline={"none"}
-                    fontSize={"18px"}
-                    fontWeight={600}
-                    border={"transparent"}
-                    pl={"20px"}
-                    _placeholder={{ opacity: 1, color: "#818181" }}
-                  />
-                )} */}
-                 <Input
-                    variant="flushed"
-                    w={"360px"}
-                    h={index === 4 ?"151px":'51px'}
-                    _hover={{}}
-                    bg={"#252525"}
-                    borderRadius={0}
-                    _focusVisible={{
-                      borderBottom: "1px solid #0070ED !important",
-                    }}
-                    as={index === 4 ?"textarea":'input'}
-                    placeholder={question.placeholder}
-                    outline={"none"}
-                    fontSize={"18px"}
-                    fontWeight={600}
-                    border={"transparent"}
-                    pl={"20px"}
-                    
-                    pt={index === 4 ?'15px':''}
-                    _placeholder={{ opacity: 1, color: "#818181", fontsize:'18px', lineHeight:'normal' }}
-                  />
-             
-                <UserGuide />
               </Flex>
             );
           })}
+        </Flex>
+        <Flex zIndex={1}>
+          <Button
+            bg={"transparent"}
+            _focus={{ bg: "transparent" }}
+            _hover={{ bg: "transparent", border: "1px solid #353535" }}
+            w={"40px"}
+            h={"32px"}
+            _active={{ bg: "transparent" }}
+            border={"1px solid #353535"}
+            borderLeftRadius={"20px"}
+            onClick={() => {
+              updateIndex(activeIndex - 1);
+            }}
+            padding={"0px"}
+            borderRightRadius={"0px"}>
+            <Image src={activeArrow} alt="activeArrow" height={7} width={13} />
+          </Button>
+          <Button
+            bg={"transparent"}
+            _focus={{ bg: "transparent" }}
+            _hover={{ bg: "transparent", border: "1px solid #353535" }}
+            w={"40px"}
+            h={"32px"}
+            padding={"0px"}
+            _active={{ bg: "transparent" }}
+            border={"1px solid #353535"}
+            borderRightRadius={"20px"}
+            onClick={() => {
+              updateIndex(activeIndex + 1);
+            }}
+            borderLeftRadius={"0px"}>
+            <Image
+              src={inactiveArrow}
+              alt="activeArrow"
+              height={7}
+              width={13}
+            />
+          </Button>
         </Flex>
       </Flex>
       <Flex className="carousel-buttons">

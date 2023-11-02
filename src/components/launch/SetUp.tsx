@@ -5,9 +5,9 @@ import { useState, SetStateAction, Dispatch } from "react";
 import { useRouter } from "next/navigation";
 import { useTermsModal } from "@/hooks/modals/useTermsModal";
 
-const SetUp = ( ) => {
+const SetUp = () => {
   const router = useRouter();
-  const {onOpenTerms, onClose} = useTermsModal()
+  const { onOpenTerms, onClose } = useTermsModal();
   return (
     <Flex flexDir={"column"} w="360px" mt={"21px"}>
       <Text fontSize={"16px"} mb={"18px"} color={"#9D9EA5"} lineHeight={"21px"}>
@@ -33,7 +33,7 @@ const SetUp = ( ) => {
           bg={"#0070ED"}
           color={"#fff"}
           fontWeight={600}
-          _disabled={{bg: '#353535', color:'#838383'}}
+          _disabled={{ bg: "#353535", color: "#838383" }}
           _hover={{ bg: "#0057E6" }}
           onClick={() => onOpenTerms()}>
           Set up
@@ -48,7 +48,7 @@ const SetUp = ( ) => {
           color={"#fff"}
           fontWeight={600}
           onClick={() => router.back()}
-          _hover={{bg:'transparent', border: '2px solid #8A8A98'}}>
+          _hover={{ bg: "transparent", border: "2px solid #8A8A98" }}>
           Back
         </Button>
       </Flex>
