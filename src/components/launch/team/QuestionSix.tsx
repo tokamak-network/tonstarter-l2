@@ -6,6 +6,17 @@ import { Overlay_Index } from "@/types/style/overlayIndex";
 import Image from "next/image";
 import BlueArrow from "@/assets/icons/blue_arrow.svg";
 import GrayArrow from "@/assets/icons/gray_arrow.svg";
+import UserGuide from "@/components/common/UserGuide";
+import { DateRange } from 'react-date-range';
+import 'react-date-range/dist/styles.css'
+import 'react-date-range/dist/theme/default.css'
+import format from 'date-fns/format'
+import { addDays } from 'date-fns'
+
+
+type ValuePiece = Date | null;
+
+type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 type SelectOption = {
   abbrev: string;
@@ -24,9 +35,6 @@ const QuestionSix = (props: { question: any }) => {
     { question: "Snapshot", placeholder: "Snapshot" },
     { question: "Whitelist", placeholder: "From", placeholder1: "To" },
   ];
-  const [selectedTimezone, setSelectedTimezone] = useState<
-    SelectOption | undefined
-  >(undefined);
 
   const customStyles = (isOpen: boolean) => {
     return {
@@ -35,7 +43,7 @@ const QuestionSix = (props: { question: any }) => {
         backgroundColor: "#252525",
         width: "330px",
         height: "51px",
-        border: "none",
+        border: "none !important",
         alignItem: "center",
         paddingLeft: "20px",
         paddingRight: "20px",
@@ -44,7 +52,7 @@ const QuestionSix = (props: { question: any }) => {
         fontWeight: 600,
         cursor: "pointer",
         borderRadius: "0px",
-        borderBottom: !isOpen ? "" : "1px solid #0070ED",
+        borderBottom: !isOpen ? "" : "1px solid #0070ED !important",
         _hover: { borderBottom: "1px solid #0070ED" },
       }),
       menu: (styles: any) => ({
@@ -209,17 +217,76 @@ const QuestionSix = (props: { question: any }) => {
           //@ts-ignore
           styles={customStyles(isOpen)}
           value={selectedOption}></Select>
+        <UserGuide />
       </Flex>
     );
   };
 
   const QuestionTwo = () => {
+    const [value, onChange] = useState<Value>([new Date(), new Date()]);
+
+    const [range, setRange] = useState<any>([
+        {
+          startDate: new Date(),
+          endDate: addDays(new Date(), 7),
+          key: 'selection'
+        }
+      ])
+
+
+      const styles = `.rdrDateDisplay{
+        display:none;
+      }`
     return (
-      <Flex>
-        <Text color={"#9D9EA5"} fontWeight={600} fontSize={"18px"} ml={"30px"}>
-          {"6-"}
-          {currentIndex + 1} {questions[1].question}
-        </Text>
+      <Flex flexDir={"column"} ml={"30px"}>
+        <Flex
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          mb={"20px"}>
+          <Text color={"#9D9EA5"} fontWeight={600} fontSize={"18px"}>
+            {"6-"}
+            {currentIndex + 1} {questions[1].question}
+          </Text>
+          <Flex columnGap={"9px"}>
+            <Text
+              color={"#353535"}
+              fontWeight={400}
+              fontSize={"14px"}
+              cursor={"pointer"}
+              _hover={{ color: "#0070ED" }}
+              onClick={() => setCurrentIndex(currentIndex - 1)}>
+              Prev
+            </Text>
+            <Text
+              color={"#353535"}
+              fontWeight={400}
+              fontSize={"14px"}
+              cursor={"pointer"}
+              _hover={{ color: "#0070ED" }}>
+              |
+            </Text>
+            <Text
+              color={"#353535"}
+              fontWeight={400}
+              fontSize={"14px"}
+              cursor={"pointer"}
+              _hover={{ color: "#0070ED" }}
+              onClick={() => setCurrentIndex(currentIndex + 1)}>
+              Next
+            </Text>
+          </Flex>
+      
+        </Flex>
+        <style>{styles}</style>
+        <DateRange
+            onChange={item => setRange([item.selection])}
+            editableDateInputs={true}
+            moveRangeOnFirstSelection={false}
+            ranges={range}
+            months={1}
+            direction="horizontal"
+            className="calendarElement"
+          />
       </Flex>
     );
   };

@@ -35,6 +35,11 @@ const styles = {
         boxShadow: "none !important",
       },
     },
+    border:{
+      _hover:{
+        borderColor:'transparent'
+      }
+    },
     ".css-1i469j7": {
       backgroundColor: "#0070ED !important",
       padding: "0px !important",
