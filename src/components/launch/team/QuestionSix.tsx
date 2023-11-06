@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Input, Text } from "@chakra-ui/react";
 import { SetStateAction, useMemo, useState } from "react";
 import { useTimezoneSelect, allTimezones } from "react-timezone-select";
 import Select from "react-select";
@@ -7,12 +7,8 @@ import Image from "next/image";
 import BlueArrow from "@/assets/icons/blue_arrow.svg";
 import GrayArrow from "@/assets/icons/gray_arrow.svg";
 import UserGuide from "@/components/common/UserGuide";
-import { DateRange } from 'react-date-range';
-import 'react-date-range/dist/styles.css'
-import 'react-date-range/dist/theme/default.css'
-import format from 'date-fns/format'
-import { addDays } from 'date-fns'
-
+import { dualCalendarStatus } from "@/recoil/launch/atom";
+import { useRecoilState } from "recoil";
 
 type ValuePiece = Date | null;
 
@@ -224,19 +220,10 @@ const QuestionSix = (props: { question: any }) => {
 
   const QuestionTwo = () => {
     const [value, onChange] = useState<Value>([new Date(), new Date()]);
+    const [calendarStatus, setCalendarStatus] =
+      useRecoilState(dualCalendarStatus);
 
-    const [range, setRange] = useState<any>([
-        {
-          startDate: new Date(),
-          endDate: addDays(new Date(), 7),
-          key: 'selection'
-        }
-      ])
-
-
-      const styles = `.rdrDateDisplay{
-        display:none;
-      }`
+ 
     return (
       <Flex flexDir={"column"} ml={"30px"}>
         <Flex
@@ -275,9 +262,60 @@ const QuestionSix = (props: { question: any }) => {
               Next
             </Text>
           </Flex>
-      
         </Flex>
-        <style>{styles}</style>
+        <Flex flexDir={"column"} rowGap={"15px"}>
+          {/* <Flex w={"330px"} h={"51px"} bg={"#252525"}></Flex> */}
+          <Input
+            w={"330px"}
+            h={"51px"}
+            _hover={{}}
+            bg={"#252525"}
+            borderRadius={0}
+            _focusVisible={{
+              border: "none !important",
+            }}
+            placeholder={"From"}
+            outline={"none"}
+            fontSize={"18px"}
+            fontWeight={600}
+            border={"transparent"}
+            pl={"20px"}
+            _placeholder={{
+              opacity: 1,
+              color: "#818181",
+              fontsize: "18px",
+              lineHeight: "normal",
+            }}
+            onClick={() => setCalendarStatus('public1')}
+          />
+           <Input
+            w={"330px"}
+            h={"51px"}
+            _hover={{}}
+            bg={"#252525"}
+            borderRadius={0}
+            _focusVisible={{
+              border: "none !important",
+            }}
+            placeholder={"To"}
+            outline={"none"}
+            fontSize={"18px"}
+            fontWeight={600}
+            border={"transparent"}
+            pl={"20px"}
+            _placeholder={{
+              opacity: 1,
+              color: "#818181",
+              fontsize: "18px",
+              lineHeight: "normal",
+            }}
+            onClick={() => setCalendarStatus('public1')}
+          />
+        </Flex>
+       
+        
+
+        {/* <style>{styles}</style>
         <DateRange
             onChange={item => setRange([item.selection])}
             editableDateInputs={true}
@@ -286,7 +324,7 @@ const QuestionSix = (props: { question: any }) => {
             months={1}
             direction="horizontal"
             className="calendarElement"
-          />
+          /> */}
       </Flex>
     );
   };

@@ -1,0 +1,9 @@
+.rdrDateDisplay {
+  display: none;
+}
+.rdrNextPrevButton {
+  background: none;
+}
+.rdrNextPrevButton:hover {
+  background: none;
+}

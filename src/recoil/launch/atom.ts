@@ -14,3 +14,8 @@ export const setUpStatus = atom<boolean>({
   key: "setUpStatus",
   default: false,
 });
+
+export const dualCalendarStatus = atom <any>({
+  key: "dualCalendarStatus",
+  default: '',
+})
