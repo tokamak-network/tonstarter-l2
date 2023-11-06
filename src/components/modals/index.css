@@ -56,36 +56,64 @@
 .rdrDays {
   margin-top: 9px;
   row-gap: 12px;
+  height: 28px;
+  line-height: normal;
 }
 
 .rdrDay {
-  border:1px solid red;
   display: flex;
   justify-content: center;
-  align-items:center;
-
-}
-
-.rdrDay span span{
+  align-items: center;
   height: 28px;
-  color: #FFFFFF !important
+  line-height: normal;
+  border: 0.1px solid red;
+}
+.rdrDay span {
+  top: 0px;
+  bottom: 0px;
+}
+.rdrDay span span {
+  height: 28px;
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff !important;
 }
 
-
-..rdrDayNumber {
-bottom: 5px
+.rdrDayNumber {
 }
-.rdrDayPassive .rdrDayNumber span{
-  color: #3C3C3C !important;  
-  }
+.rdrDayPassive .rdrDayNumber span {
+  color: #3c3c3c !important;
+}
 
-  .rdrCalendarWrapper:not(.rdrDateRangeWrapper) .rdrDayHovered .rdrDayNumber:after {
-    border-radius: 50%;
-  }
+.rdrCalendarWrapper:not(.rdrDateRangeWrapper)
+  .rdrDayHovered
+  .rdrDayNumber:after {
+  height: 28px;
+}
 
-.rdrSelected,
-.rdrInRange,
-.rdrStartEdge,
+.rdrDayToday .rdrDayNumber span:after {
+  background: none;
+  border: 1px solid #0070ed;
+  border-radius: 50%;
+  height: 26px;
+  width: 28px;
+  bottom: 0px;
+}
+.rdrDayToday:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span:after,
+.rdrDayToday:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span:after,
+.rdrDayToday:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span:after,
+.rdrDayToday:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span:after {
+  background: transparent;
+}
 .rdrEndEdge {
-
+  height: 28px;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+.rdrStartEdge {
+  height: 28px;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
 }
