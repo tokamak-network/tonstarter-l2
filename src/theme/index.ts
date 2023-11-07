@@ -35,10 +35,15 @@ const styles = {
         boxShadow: "none !important",
       },
     },
-    border:{
-      _hover:{
-        borderColor:'transparent'
-      }
+    border: {
+      _hover: {
+        borderColor: "transparent",
+      },
+    },
+    select: {
+      paddingLeft: "7px !important",
+      paddingRight: '0px !important',
+      width: '72px !important'
     },
     ".css-1i469j7": {
       backgroundColor: "#0070ED !important",

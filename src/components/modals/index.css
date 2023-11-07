@@ -15,6 +15,9 @@
 .rdrPprevButton i {
   border-color: transparent rgb(0, 112, 237) transparent transparent;
 }
+.rdrNextButton i {
+  border-color: transparent transparent transparent rgb(0, 112, 237);
+}
 
 .rdrMonthName {
   display: none;
@@ -66,7 +69,6 @@
   align-items: center;
   height: 28px;
   line-height: normal;
-  border: 0.1px solid red;
 }
 .rdrDay span {
   top: 0px;
@@ -80,17 +82,8 @@
   align-items: center;
   color: #ffffff !important;
 }
-
-.rdrDayNumber {
-}
 .rdrDayPassive .rdrDayNumber span {
   color: #3c3c3c !important;
-}
-
-.rdrCalendarWrapper:not(.rdrDateRangeWrapper)
-  .rdrDayHovered
-  .rdrDayNumber:after {
-  height: 28px;
 }
 
 .rdrDayToday .rdrDayNumber span:after {
@@ -98,22 +91,86 @@
   border: 1px solid #0070ed;
   border-radius: 50%;
   height: 26px;
-  width: 28px;
+  width: 26px;
   bottom: 0px;
 }
+.rdrEndEdge {
+  height: 28px;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+  margin-right: 2px;
+}
+.rdrStartEdge {
+  height: 28px;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  margin-left: 2px;
+}
+.rdrDayStartOfWeek .rdrInRange,
+.rdrDayStartOfWeek .rdrEndEdge {
+  border-radius: 0px;
+}
+.rdrDayEndOfWeek .rdrInRange,
+.rdrDayEndOfWeek .rdrStartEdge {
+  border-radius: 0px;
+}
+
+.rdrDayStartOfMonth .rdrInRange,
+.rdrDayStartOfMonth .rdrEndEdge,
+.rdrDayStartOfWeek .rdrInRange,
+.rdrDayStartOfWeek .rdrEndEdge {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  margin-left: 2px;
+}
+
+.rdrDayStartOfWeek .rdrEndEdge {
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.rdrDayStartOfWeek .rdrStartEdge {
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+}
+
+.rdrDayStartOfMonth .rdrInRange,
+.rdrDayStartOfMonth .rdrEndEdge {
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+}
+
 .rdrDayToday:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span:after,
 .rdrDayToday:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span:after,
 .rdrDayToday:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span:after,
 .rdrDayToday:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span:after {
   background: transparent;
 }
-.rdrEndEdge {
-  height: 28px;
-  border-top-right-radius: 14px;
-  border-bottom-right-radius: 14px;
+
+.rdrDayStartPreview {
+  margin-left: 3px;
 }
-.rdrStartEdge {
-  height: 28px;
-  border-top-left-radius: 14px;
-  border-bottom-left-radius: 14px;
+
+.rdrDayEndPreview {
+  margin-right: 3px;
+}
+.rdrDayEndOfWeek .rdrDayEndOfWeek .rdrStartEdge {
+  border-radius: 14px;
+}
+
+.rdrStartEdge .rdrEndEdge {
+  border-radius: 14px;
+}
+.rdrDayDisabled .rdrInRange,
+.rdrDayDisabled .rdrStartEdge,
+.rdrDayDisabled .rdrEndEdge,
+.rdrDayDisabled .rdrSelected,
+.rdrDayDisabled .rdrDayStartPreview,
+.rdrDayDisabled .rdrDayInPreview,
+.rdrDayDisabled .rdrDayEndPreview {
+  display: none;
+}
+
+.rdrDayHovered {
+  border: none;
 }
