@@ -24,7 +24,7 @@ import "react-date-range/dist/theme/default.css";
 import { useState } from "react";
 import "font-proxima-nova/style.css";
 
-const SingalCalendarModal = () => {
+const SingleCalendarModal = () => {
   const [calendarStatus, setCalendarStatus] =
     useRecoilState(dualCalendarStatus);
 
@@ -230,7 +230,7 @@ const SingalCalendarModal = () => {
 
   return (
     <Modal
-      isOpen={calendarStatus !== ""}
+      isOpen={calendarStatus === "snapshot"}
       onClose={() => setCalendarStatus("")}
       isCentered>
       <ModalOverlay />
@@ -385,139 +385,7 @@ const SingalCalendarModal = () => {
             <option>PM</option>
           </Select>
         </Flex>
-        <Flex
-          height={"53px"}
-          borderBottom={"1px solid #313442"}
-          justifyContent={"center"}
-          alignItems={"center"}>
-        <NumberInput
-            maxH={"29px"}
-            maxW={"44px"}
-            defaultValue={1}
-            colorScheme={"gray"}
-            max={12}
-            min={1}
-            display={"flex"}
-            alignItems={"center"}
-            mr={"10px"}
-            // onChange={(value) => {
-            //   setHours(parseInt(value));
-            // }}
-            borderColor={"transparent"}
-            _focus={{
-              borderColor: "transparent",
-            }}
-            _active={{
-              borderColor: "transparent",
-            }}
-            _hover={{
-              borderColor: "transparent",
-            }}
-            focusBorderColor="transparent">
-            <NumberInputField
-              fontSize="24px"
-              fontWeight={400}
-              pl={"0px"}
-              pr={"14px"}
-              textAlign={"right"}
-              _hover={{
-                borderColor: "transparent",
-              }}
-            />
-            <NumberInputStepper
-              borderColor={"transparent"}
-              rowGap={"0px"}
-              width={"16px"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              display={"flex"}>
-              <NumberIncrementStepper
-                borderColor={"transparent"}
-                _active={{ bg: "transparent" }}>
-                <Image src={ArrowInactive} alt="arrowActive" />
-              </NumberIncrementStepper>
-              <NumberDecrementStepper
-                marginLeft={"2px"}
-                borderColor={"transparent"}
-                transform={"rotate(180deg)"}
-                _active={{ bg: "transparent" }}>
-                <Image src={ArrowInactive} alt="arrowActive" />
-              </NumberDecrementStepper>
-            </NumberInputStepper>
-          </NumberInput>
-          <NumberInput
-            maxH={"29px"}
-            maxW={"44px"}
-            display={"flex"}
-            alignItems={"center"}
-            defaultValue={0}
-            max={59}
-            min={0}
-            mr={"10px"}
-            borderColor={"transparent"}
-            _focus={{
-              borderColor: "transparent",
-            }}
-            _active={{
-              borderColor: "transparent",
-            }}
-            _hover={{
-              borderColor: "transparent",
-            }}
-            focusBorderColor="transparent">
-            <NumberInputField
-              fontSize="24px"
-              pl={"0px"}
-              pr={"14px"}
-              fontWeight={400}
-              textAlign={"right"}
-              _hover={{
-                borderColor: "transparent",
-              }}
-            />
-            <NumberInputStepper
-              borderColor={"transparent"}
-              rowGap={"0px"}
-              width={"16px"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              display={"flex"}>
-              <NumberIncrementStepper
-                borderColor={"transparent"}
-                _active={{ bg: "transparent" }}>
-                <Image src={ArrowInactive} alt="arrowActive" />
-              </NumberIncrementStepper>
-              <NumberDecrementStepper
-                marginLeft={"2px"}
-                borderColor={"transparent"}
-                transform={"rotate(180deg)"}
-                _active={{ bg: "transparent" }}>
-                <Image src={ArrowInactive} alt="arrowActive" />
-              </NumberDecrementStepper>
-            </NumberInputStepper>
-          </NumberInput>
-          <Select
-            h={"32px"}
-          width={'72px'}
-            borderRadius={'0px'}
-            _active={{border:'none', outline:'none'}}
-            _focus={{border:'none', outline:'none'}}
-            _focusVisible={{
-              border: "none !important",
-            }}
-            // color={themeDesign.select[colorMode]}
-            bg='#222'
-            border={'none'}
-            fontWeight={500}
-            fontStyle={'15px'}
-            // onChange={(e) => {
-            //   setMeridiem(e.target.value);
-            // }}
-          >
-            <option>AM</option>
-            <option>PM</option>
-          </Select>
-        </Flex>
+       
         <Flex
           columnGap={"12px"}
           justifyContent={"center"}
@@ -554,4 +422,4 @@ const SingalCalendarModal = () => {
   );
 };
 
-export default SingalCalendarModal;
+export default SingleCalendarModal;

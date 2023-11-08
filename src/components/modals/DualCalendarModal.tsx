@@ -230,7 +230,7 @@ const DualCalendarModal = () => {
 
   return (
     <Modal
-      isOpen={calendarStatus !== ""}
+      isOpen={calendarStatus !== "" && calendarStatus !== 'snapshot'}
       onClose={() => setCalendarStatus("")}
       isCentered>
       <ModalOverlay />
