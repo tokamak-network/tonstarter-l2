@@ -39,9 +39,10 @@ const SingleCalendarModal = () => {
     display: flex;
     border-bottom:1px solid #313442;
   }
-  .rdrDateDisplay {
+    .rdrDateDisplay {
     display: none;
   }
+
   .rdrNextPrevButton {
     background: none;
   }
@@ -55,166 +56,6 @@ const SingleCalendarModal = () => {
     border-color: transparent transparent transparent rgb(0, 112, 237);
   }
   
-  .rdrMonthName {
-    display: none;
-  }
-  .rdrMonthAndYearWrapper {
-    padding-top: 0px;
-    height: 47px;
-    border-bottom: 1px solid #313442;
-  }
-  .rdrMonthAndYearPickers {
-    font-size: 14px;
-    font-weight: 400;
-  }
-  .rdrMonths .rdrMonthsHorizontal {
-    padding-left: 25px;
-    padding-right: 25px;
-  }
-  
-  .rdrMonth {
-    padding-left: 25px;
-    padding-right: 25px;
-  }
-  .rdrWeekDays {
-    display: flex;
-    margin-top: 12px;
-  }
-  
-  .rdrWeekDay {
-    height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    color: #777777;
-    font-size: 10px;
-    font-weight: 400;
-  }
-  
-  .rdrDays {
-    margin-top: 9px;
-    row-gap: 12px;
-    height: 28px;
-    line-height: normal;
-  }
-  
-  .rdrDay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 28px;
-    line-height: normal;
-  }
-  .rdrDay span {
-    top: 0px;
-    bottom: 0px;
-  }
-  .rdrDay span span {
-    height: 28px;
-    width: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff !important;
-  }
-  .rdrDayPassive .rdrDayNumber span {
-    color: #3c3c3c !important;
-  }
-  
-  .rdrDayToday .rdrDayNumber span:after {
-    background: none;
-    border: 1px solid #0070ed;
-    border-radius: 50%;
-    height: 26px;
-    width: 26px;
-    bottom: 0px;
-  }
-  .rdrEndEdge {
-    height: 28px;
-    border-top-right-radius: 14px;
-    border-bottom-right-radius: 14px;
-    margin-right: 2px;
-  }
-  .rdrStartEdge {
-    height: 28px;
-    border-top-left-radius: 14px;
-    border-bottom-left-radius: 14px;
-    margin-left: 2px;
-  }
-  .rdrDayStartOfWeek .rdrInRange,
-  .rdrDayStartOfWeek .rdrEndEdge {
-    border-radius: 0px;
-  }
-  .rdrDayEndOfWeek .rdrInRange,
-  .rdrDayEndOfWeek .rdrStartEdge {
-    border-radius: 0px;
-  }
-  
-  .rdrDayStartOfMonth .rdrInRange,
-  .rdrDayStartOfMonth .rdrEndEdge,
-  .rdrDayStartOfWeek .rdrInRange,
-  .rdrDayStartOfWeek .rdrEndEdge {
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    margin-left: 2px;
-  }
-  
-  .rdrDayStartOfWeek .rdrEndEdge {
-    border-top-right-radius: 14px;
-    border-bottom-right-radius: 14px;
-  }
-  
-  .rdrDayStartOfWeek .rdrStartEdge {
-    border-top-left-radius: 14px;
-    border-bottom-left-radius: 14px;
-  }
-  
-  .rdrDayEndOfWeek .rdrEndEdge {
-    border-top-right-radius: 14px;
-    border-bottom-right-radius: 14px;
-  }
-  .rdrDayEndOfWeek .rdrStartEdge {
-    border-top-left-radius: 14px;
-    border-bottom-left-radius: 14px;
-  }
-  .rdrDayStartOfMonth .rdrInRange,
-  .rdrDayStartOfMonth .rdrEndEdge {
-    border-top-right-radius: 13px;
-    border-bottom-right-radius: 13px;
-  }
-  
-  .rdrDayToday:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span:after,
-  .rdrDayToday:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span:after,
-  .rdrDayToday:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span:after,
-  .rdrDayToday:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span:after {
-    background: transparent;
-  }
-  
-  .rdrDayStartPreview {
-    margin-left: 3px;
-  }
-  
-  .rdrDayEndPreview {
-    margin-right: 3px;
-  }
-  .rdrDayEndOfWeek .rdrDayEndOfWeek .rdrStartEdge {
-    border-radius: 14px;
-  }
-  
-  .rdrStartEdge .rdrEndEdge {
-    border-radius: 14px;
-  }
-  .rdrDayDisabled .rdrInRange,
-  .rdrDayDisabled .rdrStartEdge,
-  .rdrDayDisabled .rdrEndEdge,
-  .rdrDayDisabled .rdrSelected,
-  .rdrDayDisabled .rdrDayStartPreview,
-  .rdrDayDisabled .rdrDayInPreview,
-  .rdrDayDisabled .rdrDayEndPreview {
-    display: none;
-  }
-  
   .rdrDayHovered {
     border: none;
   } 
@@ -222,13 +63,12 @@ const SingleCalendarModal = () => {
     color: #0070ed !important;
     height:28px;
     width:28px;
-    left:0px;
+    left:8px;
     right:0px;
     display:flex;
     justify-content: center;
     align-items: center;
-    left:6px
-    
+    border-radius:14px
   } `;
 
   const [range, setRange] = useState<any>([
@@ -267,7 +107,7 @@ const SingleCalendarModal = () => {
           direction="horizontal"
           className="calendarElement"
         /> */}
-         <Calendar onChange={item => setDate(item)}  date={date} />
+         <Calendar   showMonthAndYearPickers={false} onChange={item => setDate(item)}  date={date} />
       
        
         <Flex
