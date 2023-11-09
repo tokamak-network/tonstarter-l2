@@ -13,9 +13,12 @@ import activeArrow from "@/assets/icons/caret-down.png";
 import inactiveArrow from "@/assets/icons/caret-up.png";
 import Image from "next/image";
 import QuestionSix from "./team/QuestionSix";
+import { useRecoilState } from "recoil";
+import { createStatus } from "@/recoil/launch/atom";
 
 const TeamCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [projectStatus, setProjectStatus] = useRecoilState(createStatus);
 
   const questions = [
     {
@@ -225,7 +228,9 @@ const TeamCarousel = () => {
             color={"#fff"}
             fontWeight={600}
             _disabled={{ bg: "#353535", color: "#838383" }}
-            _hover={{ bg: "#0057E6" }}>
+            _hover={{ bg: "#0057E6" }}
+            onClick={() => setProjectStatus(1)}
+            >
             Finish
           </Button>
         </Flex>
