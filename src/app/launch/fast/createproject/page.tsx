@@ -34,9 +34,8 @@ const CreateProject = () => {
       <Flex width={"100%"} mt={"100px"}>
         <ProjectSteps />
         <Flex
-          border={"1px solid yellow"}
           w={"50%"}
-          pt={'13px'}
+          pt={"13px"}
           justifyContent={"flex-start"}
           pl={"60px"}
           fontFamily={"Proxima Nova Rg"}>

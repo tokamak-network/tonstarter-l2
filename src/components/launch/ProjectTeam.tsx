@@ -8,15 +8,19 @@ import { useRecoilValue } from "recoil";
 const ProjectTeam = () => {
   const setup = useRecoilValue(setUpStatus);
   return (
-    <Flex flexDir={"column"}>
+    <Flex flexDir={"column"}  width={'100%'}>
       <Text
         color={"#D0D0DA"}
         fontSize={"21px"}
         lineHeight={"21px"}
+       
         fontWeight={600}>
         Project & Team
       </Text>
+     
       {setup ? <TeamCarousel /> : <SetUp />}
+    
+   
     </Flex>
   );
 };

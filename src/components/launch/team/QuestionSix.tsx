@@ -524,23 +524,7 @@ const QuestionSix = (props: { question: any }) => {
             onClick={() => setCurrentIndex(currentIndex - 1)}>
             Prev
           </Text>
-          <Text
-            color={"#353535"}
-            fontWeight={400}
-            fontSize={"14px"}
-            cursor={"pointer"}
-            _hover={{ color: "#0070ED" }}>
-            |
-          </Text>
-          <Text
-            color={"#353535"}
-            fontWeight={400}
-            fontSize={"14px"}
-            cursor={"pointer"}
-            _hover={{ color: "#0070ED" }}
-            onClick={() => setCurrentIndex(currentIndex + 1)}>
-            Next
-          </Text>
+          
         </Flex>
       </Flex>
       <Flex flexDir={"column"} rowGap={"15px"}>
