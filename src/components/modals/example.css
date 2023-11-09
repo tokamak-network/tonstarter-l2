@@ -1,0 +1,105 @@
+
+  
+  .rdrDayStartOfWeek .rdrInRange,
+  .rdrDayStartOfWeek .rdrEndEdge {
+    border-radius: 0px;
+  }
+  .rdrDayEndOfWeek .rdrInRange,
+  .rdrDayEndOfWeek .rdrStartEdge {
+    border-radius: 0px;
+  }
+  
+  .rdrDayStartOfWeek .rdrInRange,
+  .rdrDayStartOfWeek .rdrStartEdge {
+    border-radius: 0px;
+  }
+  .rdrDayStartOfMonth .rdrInRange,
+  .rdrDayStartOfMonth .rdrEndEdge,
+  .rdrDayStartOfWeek .rdrInRange,
+  .rdrDayStartOfWeek .rdrEndEdge {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-left: 2px;
+  }
+  .rdrDayStartOfMonth .rdrInRange,
+  .rdrDayStartOfMonth .rdrEndEdge,
+  .rdrDayStartOfWeek .rdrInRange,
+  .rdrDayStartOfWeek .rdrEndEdge {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+  
+  .rdrDayStartOfWeek .rdrEndEdge {
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+  }
+  
+  .rdrDayStartOfWeek .rdrStartEdge {
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+  }
+  
+  .rdrDayStartOfWeek .rdrStartEdge {
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+  }
+  
+  .rdrDayStartOfWeek .rdrEndEdge {
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+  }
+  
+  .rdrDayEndOfWeek .rdrEndEdge {
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+  }
+  .rdrDayEndOfWeek .rdrStartEdge {
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+  }
+  .rdrDayStartOfMonth .rdrInRange,
+  .rdrDayStartOfMonth .rdrEndEdge {
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+  }
+  
+  
+  
+  .rdrDayStartOfMonth .rdrInRange,
+  .rdrDayStartOfMonth .rdrEndEdge,
+  .rdrDayStartOfWeek .rdrInRange,
+  .rdrDayStartOfWeek .rdrEndEdge {
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+  }
+  .rdrDayStartOfMonth .rdrDayStartPreview {
+    margin-left: 3px;
+  }
+  
+  .rdrDayEndOfMonth .rdrDayEndPreview {
+    margin-right: 3px;
+  }
+  .rdrDayEndPreview {
+  }
+  .rdrDayEndOfWeek .rdrDayEndOfWeek .rdrStartEdge {
+    border-radius: 14px;
+  }
+  
+  .rdrInRange span {
+    color: transparent !important;
+  }
+  
+  .rdrStartEdge .rdrEndEdge {
+    border-radius: 14px;
+  }
+  .rdrDayDisabled .rdrInRange,
+  .rdrDayDisabled .rdrStartEdge,
+  .rdrDayDisabled .rdrEndEdge,
+  .rdrDayDisabled .rdrSelected,
+  .rdrDayDisabled .rdrDayStartPreview,
+  .rdrDayDisabled .rdrDayInPreview,
+  .rdrDayDisabled .rdrDayEndPreview {
+    display: none;
+  }
+
+  

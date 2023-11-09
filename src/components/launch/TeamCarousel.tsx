@@ -62,21 +62,23 @@ const TeamCarousel = () => {
       flexDir={"row"}
       alignItems={"center"}
       w={"100%"}
+      mt={'27px'}
       justifyContent={"space-between"}>
       <Flex
         color={"white"}
         className="carousel"
-        h={"600px"}
         flexDir={"column"}
         overflow={"hidden"}
         alignItems={"center"}>
         <Flex
+         h={activeIndex === 0?  '271px':"406px"}
           className="inner"
           whiteSpace={"nowrap"}
           transition={"transform 0.3s"}
           flexDir={"column"}
           style={{
-            transform: `translate(0,${-10 * activeIndex}px)`,
+            transform: `translate(0,${activeIndex === 0
+              ?135 :-10 * activeIndex}px)`,
           }}>
           {questions.map((question: any, index: number) => {
             if (activeIndex === index) {
@@ -144,6 +146,9 @@ const TeamCarousel = () => {
             );
           })}
         </Flex>
+
+        {/* buttons  */}
+        <Flex columnGap={'130px'}>
         <Flex zIndex={1}>
           <Button
             bg={"transparent"}
@@ -182,6 +187,18 @@ const TeamCarousel = () => {
               width={13}
             />
           </Button>
+        
+        </Flex>
+        <Button
+            w="150px"
+            h="40px"
+            borderRadius={"20px"}
+            fontSize={"15px"}
+            bg={"#0070ED"}
+            color={"#fff"}
+            fontWeight={600}
+            _disabled={{ bg: "#353535", color: "#838383" }}
+            _hover={{ bg: "#0057E6" }}>Finish</Button>
         </Flex>
       </Flex>
       <Flex className="carousel-buttons">

@@ -502,13 +502,99 @@ const QuestionSix = (props: { question: any }) => {
   };
 
   const QuestionFive = () => {
+    const [calendarStatus, setCalendarStatus] =
+    useRecoilState(dualCalendarStatus);
     return (
-      <Flex>
-        <Text color={"#9D9EA5"} fontWeight={600} fontSize={"18px"} ml={"30px"}>
+      <Flex flexDir={"column"} ml={"30px"}>
+      <Flex
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        mb={"20px"}>
+        <Text color={"#9D9EA5"} fontWeight={600} fontSize={"18px"}>
           {"6-"}
           {currentIndex + 1} {questions[4].question}
         </Text>
+        <Flex columnGap={"9px"}>
+          <Text
+            color={"#353535"}
+            fontWeight={400}
+            fontSize={"14px"}
+            cursor={"pointer"}
+            _hover={{ color: "#0070ED" }}
+            onClick={() => setCurrentIndex(currentIndex - 1)}>
+            Prev
+          </Text>
+          <Text
+            color={"#353535"}
+            fontWeight={400}
+            fontSize={"14px"}
+            cursor={"pointer"}
+            _hover={{ color: "#0070ED" }}>
+            |
+          </Text>
+          <Text
+            color={"#353535"}
+            fontWeight={400}
+            fontSize={"14px"}
+            cursor={"pointer"}
+            _hover={{ color: "#0070ED" }}
+            onClick={() => setCurrentIndex(currentIndex + 1)}>
+            Next
+          </Text>
+        </Flex>
       </Flex>
+      <Flex flexDir={"column"} rowGap={"15px"}>
+        {/* <Flex w={"330px"} h={"51px"} bg={"#252525"}></Flex> */}
+        <Input
+          w={"330px"}
+          h={"51px"}
+          _hover={{}}
+          bg={"#252525"}
+          borderRadius={0}
+          _focusVisible={{
+            border: "none !important",
+          }}
+          placeholder={"From"}
+          outline={"none"}
+          fontSize={"18px"}
+          fontWeight={600}
+          border={"transparent"}
+          pl={"20px"}
+          _placeholder={{
+            opacity: 1,
+            color: "#818181",
+            fontsize: "18px",
+            lineHeight: "normal",
+          }}
+          onClick={() => setCalendarStatus('whitelist')}
+        />
+         <Input
+          w={"330px"}
+          h={"51px"}
+          _hover={{}}
+          bg={"#252525"}
+          borderRadius={0}
+          _focusVisible={{
+            border: "none !important",
+          }}
+          placeholder={"To"}
+          outline={"none"}
+          fontSize={"18px"}
+          fontWeight={600}
+          border={"transparent"}
+          pl={"20px"}
+          _placeholder={{
+            opacity: 1,
+            color: "#818181",
+            fontsize: "18px",
+            lineHeight: "normal",
+          }}
+          onClick={() => setCalendarStatus('whitelist')}
+        />
+         <UserGuide />
+      </Flex>
+     
+    </Flex>
     );
   };
 
@@ -532,7 +618,7 @@ const QuestionSix = (props: { question: any }) => {
       w={"360px"}
       fontFamily={"Proxima Nova Rg"}
       flexDir={"column"}
-      mr={"20px"}
+     
       mb={"60px"}>
       <Text
         fontSize={"21px"}
