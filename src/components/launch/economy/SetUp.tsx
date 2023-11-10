@@ -1,18 +1,18 @@
 import { Flex, Text, Link, Button } from "@chakra-ui/react";
-import UserGuide from "../common/UserGuide";
+import UserGuide from "../../common/UserGuide";
 import Image from "next/image";
 import { useState, SetStateAction, Dispatch } from "react";
 import { useRouter } from "next/navigation";
-import { useTermsModal } from "@/hooks/modals/useTermsModal";
 
-const SetUp = () => {
+const SetUp = (props: {
+    setSetUp: React.Dispatch<SetStateAction<boolean>>;
+}) => {
   const router = useRouter();
-  const { onOpenTerms, onClose } = useTermsModal();
+  const {setSetUp} = props;
   return (
     <Flex flexDir={"column"} w="360px" mt={"21px"}>
       <Text fontSize={"16px"} mb={"18px"} color={"#9D9EA5"} lineHeight={"21px"}>
-        Be specific about your project&apos;s purpose, team composition, etc.
-        The more you put in, the more support you&apos;ll get
+      Tokens are the fuel that makes your project fly. Set up your funding target, types of vaults and schedule, etc.
       </Text>
       <UserGuide />
       <Flex mt={"30px"}>
@@ -35,7 +35,8 @@ const SetUp = () => {
           fontWeight={600}
           _disabled={{ bg: "#353535", color: "#838383" }}
           _hover={{ bg: "#0057E6" }}
-          onClick={() => onOpenTerms()}>
+          onClick={()=>setSetUp(false)}
+          >
           Set up
         </Button>
         <Button

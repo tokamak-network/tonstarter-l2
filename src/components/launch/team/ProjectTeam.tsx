@@ -1,5 +1,5 @@
 import { Text, Flex } from "@chakra-ui/react";
-import EconomyCarousel from "./EconomyCarousel";
+import EconomyCarousel from "../economy/EconomyCarousel";
 import TeamCarousel from "./TeamCarousel";
 import { useState } from "react";
 import SetUp from "./SetUp";

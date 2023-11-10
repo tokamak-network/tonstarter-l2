@@ -2,8 +2,8 @@
 import PageTitle from "@/components/common/PageTitle";
 import { Flex } from "@chakra-ui/react";
 import ProjectSteps from "@/components/launch/ProjectSteps";
-import ProjectTeam from "@/components/launch/ProjectTeam";
-import TokenEconomy from "@/components/launch/TokenEconomy";
+import ProjectTeam from "@/components/launch/team/ProjectTeam";
+import TokenEconomy from "@/components/launch/economy/TokenEconomy";
 import Launch from "@/components/launch/LaunchProject";
 import { useRecoilValue } from "recoil";
 import { createStatus } from "@/recoil/launch/atom";

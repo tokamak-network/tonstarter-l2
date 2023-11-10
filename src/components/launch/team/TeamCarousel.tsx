@@ -8,11 +8,11 @@ import {
 } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
 import "font-proxima-nova/style.css";
-import UserGuide from "../common/UserGuide";
+import UserGuide from "../../common/UserGuide";
 import activeArrow from "@/assets/icons/caret-down.png";
 import inactiveArrow from "@/assets/icons/caret-up.png";
 import Image from "next/image";
-import QuestionSix from "./team/QuestionSix";
+import QuestionSix from "./QuestionSix";
 import { useRecoilState } from "recoil";
 import { createStatus } from "@/recoil/launch/atom";
 
