@@ -114,31 +114,113 @@ const VaultModifyModal = () => {
                 flexDir={"column"}
                 backgroundRepeat={"no-repeat"}
                 alignItems={"center"}>
-                <Text mt={"65px"} fontWeight={700} fontSize={"21px"} h='26px'>
+                <Text mt={"65px"} fontWeight={700} fontSize={"21px"} h="26px">
                   {" "}
                   {vaultInfo[0].vaultName}
                 </Text>
-                <Text mt={"15px"} fontWeight={400} fontSize={"13px"} opacity={0.65}>
+                <Text
+                  mt={"15px"}
+                  fontWeight={400}
+                  fontSize={"13px"}
+                  opacity={0.65}>
                   {" "}
                   Token Allocation
                 </Text>
-                <Text mt={"3px"} fontWeight={700} fontSize={"16px"} h={'19px'}>
+                <Text mt={"3px"} fontWeight={700} fontSize={"16px"} h={"19px"}>
                   {" "}
                   {vaultInfo[0].tokenAllocation}
                 </Text>
-                <Text height={'16px'} mt={"12px"} fontWeight={400} fontSize={"13px"} opacity={0.65}>
+                <Text
+                  height={"16px"}
+                  mt={"12px"}
+                  fontWeight={400}
+                  fontSize={"13px"}
+                  opacity={0.65}>
                   {" "}
                   Portion
                 </Text>
                 <Text mt={"3px"} fontWeight={700} fontSize={"16px"}>
                   {" "}
-                  {vaultInfo[0].portion}
+                  {vaultInfo[0].portion} {"%"}
                 </Text>
-                <Flex mt={'18px'} opacity={0.65} fontSize={'11px'}>
-                    <Text>Edit | </Text> 
-                    <Text>{' '} Delete</Text>
+                <Flex mt={"18px"} opacity={0.65} fontSize={"11px"}>
+                  <Text>Edit | </Text>
+                  <Text ml={"3px"}> Delete</Text>
                 </Flex>
               </Flex>
+              {vaultInfo.slice(1).map((vault: any, index: number) => {
+                return (
+                  <Flex key={index} flexDir={"column"}>
+                    <Flex
+                      w={"200px"}
+                      height={"16px"}
+                      backgroundImage={FuelLine.src}
+                      backgroundSize={"cover"}
+                      css={{
+                        backgroundPositionY: ["center"],
+                        backgroundPositionX: "center",
+                      }}
+                      flexDir={"column"}
+                      backgroundRepeat={"no-repeat"}></Flex>
+                    <Flex
+                      w={"200px"}
+                      height={"216px"}
+                      backgroundImage={FuelContents.src}
+                      backgroundSize={"cover"}
+                      css={{
+                        backgroundPositionY: ["center"],
+                        backgroundPositionX: "center",
+                      }}
+                      flexDir={"column"}
+                      backgroundRepeat={"no-repeat"}
+                      alignItems={"center"}>
+                      <Text
+                        mt={"10px"}
+                        fontWeight={700}
+                        fontSize={"21px"}
+                        h="26px">
+                        {" "}
+                        {vault.vaultName}
+                      </Text>
+                      <Text
+                        mt={"15px"}
+                        fontWeight={400}
+                        fontSize={"13px"}
+                        opacity={0.65}>
+                        {" "}
+                        Token Allocation
+                      </Text>
+                      <Text
+                        mt={"3px"}
+                        fontWeight={700}
+                        fontSize={"16px"}
+                        h={"19px"}>
+                        {" "}
+                        {vault.tokenAllocation}
+                      </Text>
+                      <Text
+                        height={"16px"}
+                        mt={"12px"}
+                        fontWeight={400}
+                        fontSize={"13px"}
+                        opacity={0.65}>
+                        {" "}
+                        Portion
+                      </Text>
+                      <Text mt={"3px"} fontWeight={700} fontSize={"16px"}>
+                        {" "}
+                        {vault.portion}
+                        {"%"}
+                      </Text>
+                      <Flex mt={"18px"} opacity={0.65} fontSize={"11px"}>
+                        <Text>Edit | </Text>
+                        <Text ml={"3px"}> Delete</Text>
+                      </Flex>
+                    </Flex>
+                  </Flex>
+                );
+              })}
+
               <Flex
                 w={"200px"}
                 height={"16px"}
@@ -151,17 +233,6 @@ const VaultModifyModal = () => {
                 flexDir={"column"}
                 backgroundRepeat={"no-repeat"}></Flex>
               <Flex
-                w={"200px"}
-                height={"216px"}
-                backgroundImage={FuelContents.src}
-                backgroundSize={"cover"}
-                css={{
-                  backgroundPositionY: ["center"],
-                  backgroundPositionX: "center",
-                }}
-                flexDir={"column"}
-                backgroundRepeat={"no-repeat"}></Flex>
-                  <Flex
                 w={"200px"}
                 height={"65px"}
                 backgroundImage={FuelBottom.src}
