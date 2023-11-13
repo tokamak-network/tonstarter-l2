@@ -1,5 +1,5 @@
 import { Flex, Text, NumberInput, NumberInputField } from "@chakra-ui/react";
-import Details from "./Details";
+import DetailComponent from "./DetailComponent";
 import { Overlay_Index } from "@/types/style/overlayIndex";
 import Image from "next/image";
 import { SetStateAction, useState } from "react";
@@ -140,8 +140,10 @@ const EconomyOne = (props: { question: any }) => {
 
   return (
     <Flex
+    border={'1px solid red'}
       flexDir={"column"}
       mt={"21px"}
+      h={ "375px"}
       w={"360px"}
       fontFamily={"Proxima Nova Rg"}>
       <Text
@@ -239,7 +241,7 @@ const EconomyOne = (props: { question: any }) => {
       </Flex>
 
       <UserGuide />
-      <Details />
+      <DetailComponent />
     </Flex>
   );
 };

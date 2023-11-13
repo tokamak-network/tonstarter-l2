@@ -172,8 +172,9 @@ const TeamCarousel = () => {
             })}
           </Flex>
 
-          {/* buttons  */}
+          
         </Flex>
+        {/* buttons  */}
         <Flex columnGap={"130px"} mt={'10px'}>
           <Flex zIndex={1}>
             <Button

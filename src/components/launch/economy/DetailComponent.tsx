@@ -1,7 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 
-const Details = () => {
-  const details = [
+const DetailComponent = () => {
+  const detailData = [
     {
       name: "Funding Target",
       detail: `$ ${1000000}`,
@@ -25,41 +25,40 @@ const Details = () => {
       detail: `${1000000}`,
     },
   ];
-  return <Flex flexDir={"column"}>{
-    details.map((detail:any, index:number) => {
-        return (  <Flex
+  return (
+    <Flex flexDir={"column"} mt={'30px'}>
+      {detailData.map((detail: any, index: number) => {
+        return (
+          <Flex
             key={index}
             w="100%"
-            justifyContent={'space-between'}
+            justifyContent={"space-between"}
             fontSize="12px"
             mb="9px">
-            <Text
-              lineHeight={'16px'}
-              fontWeight={500}
-              color={ '#9d9ea5' }>
+            <Text lineHeight={"16px"} fontWeight={500} color={"#9d9ea5"}>
               {detail.name}
             </Text>
             <Flex>
-              <Text
-                lineHeight={'16px'}
-                fontWeight={'bold'}
-                color={ 'white.200' }>
+              <Text lineHeight={"16px"} fontWeight={"bold"} color={"white.200"}>
                 {detail.detail}
               </Text>
               {detail.detail2 ? (
                 <Text
                   ml="3px"
-                  lineHeight={'16px'}
-                  fontWeight={'bold'}
-                  color={ 'white.200'}>
+                  lineHeight={"16px"}
+                  fontWeight={"bold"}
+                  color={"white.200"}>
                   {detail.detail2}
                 </Text>
               ) : (
                 <></>
               )}
             </Flex>
-          </Flex>)
-    })}</Flex>;
+          </Flex>
+        );
+      })}
+    </Flex>
+  );
 };
 
-export default Details;
+export default DetailComponent;
