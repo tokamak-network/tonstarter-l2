@@ -12,6 +12,7 @@ import activeArrow from "@/assets/icons/caret-down.png";
 import inactiveArrow from "@/assets/icons/caret-up.png";
 import { useRecoilState } from "recoil";
 import { createStatus } from "@/recoil/launch/atom";
+import * as d3 from "d3";
 
 const EconomyCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -90,7 +91,7 @@ const EconomyCarousel = () => {
           overflow={"hidden"}
           alignItems={"center"}>
           <Flex 
-            h={ "400px"}
+            h={activeIndex === 3? '615px': "400px"}
             className="inner"
             whiteSpace={"nowrap"}
             transition={"transform 0.3s"}
@@ -99,7 +100,7 @@ const EconomyCarousel = () => {
               transform: `translate(0,${-400 * activeIndex}px)`,
             }}>
             {questions.map((item: any, index: number) => {
-              return <Flex h={'475px'} key={index}>{getSlide(index, item)}</Flex>;
+              return <Flex  key={index}>{getSlide(index, item)}</Flex>;
             })}
           </Flex>
         </Flex>

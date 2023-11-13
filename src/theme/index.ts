@@ -42,8 +42,8 @@ const styles = {
     },
     select: {
       paddingLeft: "7px !important",
-      paddingRight: '0px !important',
-      width: '72px !important'
+      paddingRight: "0px !important",
+      width: "72px !important",
     },
     ".css-1i469j7": {
       backgroundColor: "#0070ED !important",
@@ -55,6 +55,17 @@ const styles = {
     },
     ".css-1ski005[data-checked]": {
       bg: "#0070ED !important",
+    },
+
+    ".css-1itxvgn": {
+      height: "18px !important",
+      width: "18px !important",
+      border: "1px solid #535353 !important",
+    },
+    ".css-1itxvgn[aria-checked=true], .css-1itxvgn[data-checked]": {
+      background: "#0070ED !important",
+      borderColor:  "#0070ED !important",
+      color: '#fff !important'
     },
   }),
 };

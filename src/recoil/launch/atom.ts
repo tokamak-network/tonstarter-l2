@@ -19,3 +19,8 @@ export const dualCalendarStatus = atom <any>({
   key: "dualCalendarStatus",
   default: '',
 })
+
+export const modifyVaultsStatus = atom<boolean>({
+  key: "modifyVaultsStatus",
+  default: false,
+})

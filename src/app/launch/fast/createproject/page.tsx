@@ -8,6 +8,7 @@ import Launch from "@/components/launch/LaunchProject";
 import { useRecoilValue } from "recoil";
 import { createStatus } from "@/recoil/launch/atom";
 import { useMemo } from "react";
+import "font-proxima-nova/style.css";
 
 const CreateProject = () => {
   const projectStep = useRecoilValue(createStatus);
