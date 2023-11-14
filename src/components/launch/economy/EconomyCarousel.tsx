@@ -12,7 +12,6 @@ import activeArrow from "@/assets/icons/caret-down.png";
 import inactiveArrow from "@/assets/icons/caret-up.png";
 import { useRecoilState } from "recoil";
 import { createStatus } from "@/recoil/launch/atom";
-import * as d3 from "d3";
 
 const EconomyCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -32,18 +31,21 @@ const EconomyCarousel = () => {
     {
       question: "Set the exchange rate",
       value: "",
-      placeholder: "8 characters or less",
+      placeholder:
+        "In order to list on a DEX, set the exchange rate between your project token and TOS.",
     },
     {
       question: "Vault set up",
       value: "",
-      placeholder: "Enter the URL here",
+      placeholder:
+        "Figuratively speaking, your project tokens are the fuel that makes your project fly. Depending on your specific purposes, you should assign tokens to specific tanks (vaults).",
       optional: true,
     },
     {
-      question: "Describe what your project is all about.",
+      question: "Claim Schedule.",
       value: "",
-      placeholder: "Enter your project description here",
+      placeholder:
+        "Investors invests in your project with TON tokens, which will be exchanged for project tokens in the public vault. However, the investors will not receive the project tokens at once, but will need to claim them periodically. You can modify the settings related to this.",
     },
     { question: "Schedule your project", value: "", placeholder: "" },
   ];
@@ -57,7 +59,6 @@ const EconomyCarousel = () => {
 
     setActiveIndex(newIndex);
   };
-  
 
   const getSlide = (index: number, item: any) => {
     switch (index) {
@@ -65,16 +66,37 @@ const EconomyCarousel = () => {
         return <EconomyOne question={item} />;
 
       case 1:
-        return <EconomyTwo question={item}/>;
+        return <EconomyTwo question={item} />;
       case 2:
-        return <EconomyThree question={item}/>;
+        return <EconomyThree question={item} />;
       case 3:
-        return <EconomyFour question={item}/>;
+        return <EconomyFour question={item} />;
       case 4:
-        return <EconomyFive />;
+        return <EconomyFive question={item} />;
       case 5:
     }
   };
+
+  const getTransition = useMemo(() => {
+    switch (activeIndex) {
+      case 0:
+        return 0;
+
+      case 1:
+        return -400;
+        case 2:
+          return -800;
+          case 3:
+          return -1200;
+          case 4:
+            return -1840;
+            case 5:
+              return -280;
+    }
+  }, [activeIndex]);
+
+
+  
   return (
     <Flex
       flexDir={"row"}
@@ -90,17 +112,17 @@ const EconomyCarousel = () => {
           flexDir={"column"}
           overflow={"hidden"}
           alignItems={"center"}>
-          <Flex 
-            h={activeIndex === 3? '615px': "400px"}
+          <Flex
+            h={activeIndex === 3 ?'615px': activeIndex === 4? "815px" : "400px"}
             className="inner"
             whiteSpace={"nowrap"}
             transition={"transform 0.3s"}
             flexDir={"column"}
             style={{
-              transform: `translate(0,${-400 * activeIndex}px)`,
+              transform: `translate(0,${getTransition}px)`,
             }}>
             {questions.map((item: any, index: number) => {
-              return <Flex  key={index}>{getSlide(index, item)}</Flex>;
+              return <Flex key={index}>{getSlide(index, item)}</Flex>;
             })}
           </Flex>
         </Flex>

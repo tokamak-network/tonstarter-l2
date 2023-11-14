@@ -24,3 +24,8 @@ export const modifyVaultsStatus = atom<boolean>({
   key: "modifyVaultsStatus",
   default: false,
 })
+
+export const addVaultsStatus = atom<boolean>({
+  key: "addVaultsStatus",
+  default: false,
+})

@@ -14,8 +14,8 @@ import UserGuide from "@/components/common/UserGuide";
 import Image from "next/image";
 import Select from "react-select";
 import DetailComponent from "./DetailComponent";
-import {  QuestionOutlineIcon } from "@chakra-ui/icons";
-import Rocket from "@/assets/images/roket.svg";
+import { QuestionOutlineIcon } from "@chakra-ui/icons";
+import Rocket from "@/assets/images/rocket.svg";
 import ArrowGroup from "@/assets/icons/arrowGroup.svg";
 import "font-proxima-nova/style.css";
 import * as d3 from "d3";
@@ -30,14 +30,13 @@ type Vault = {
 const EconomyFour = (props: { question: any }) => {
   const { question } = props;
   const [defaultStatus, setDefaultStatus] = useState("1");
-const [modifyVault, setModifyVault] = useRecoilState(modifyVaultsStatus)
+  const [modifyVault, setModifyVault] = useRecoilState(modifyVaultsStatus);
 
-useEffect(() => {
-  if (defaultStatus === '2') {
-    setModifyVault(true)
-  }
-   
-},[defaultStatus, setModifyVault])
+  useEffect(() => {
+    if (defaultStatus === "2") {
+      setModifyVault(true);
+    }
+  }, [defaultStatus, setModifyVault]);
 
   const [vaults] = useState([
     {
@@ -119,12 +118,11 @@ useEffect(() => {
       <Text
         whiteSpace={"break-spaces"}
         fontSize={"16px"}
+        letterSpacing={'0.32px'}
         fontWeight={400}
         color={"#9D9EA5"}
         lineHeight={"21px"}>
-        Figuratively speaking, your project tokens are the fuel that makes your
-        project fly. Depending on your specific purposes, you should assign
-        tokens to specific tanks (vaults).
+        {question.placeholder}
       </Text>
       <Flex justifyContent={"flex-start"}>
         <UserGuide />
@@ -149,10 +147,7 @@ useEffect(() => {
               textAlign={"center"}>
               Your project token Allocation
             </Text>
-            <Flex
-              w={"140px"}
-              h={"140px"}
-              mb={"21px"}>
+            <Flex w={"140px"} h={"140px"} mb={"21px"}>
               <svg ref={svgRef}></svg>
             </Flex>
             <RadioGroup onChange={setDefaultStatus} value={defaultStatus}>
@@ -182,7 +177,7 @@ useEffect(() => {
                 key={index}
                 alignItems={"center"}
                 justifyContent={"space-between"}>
-                <Flex alignItems={'center'}>
+                <Flex alignItems={"center"}>
                   <Flex
                     bg={vault.color}
                     height={"9px"}
@@ -211,7 +206,7 @@ useEffect(() => {
           })}
         </Flex>
         <Text
-        mt={'21px'}
+          mt={"21px"}
           color={"#9D9EA5"}
           fontSize={"13px"}
           fontWeight={400}

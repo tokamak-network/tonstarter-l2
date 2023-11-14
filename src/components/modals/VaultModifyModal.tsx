@@ -15,10 +15,12 @@ import FuelTop from "@/assets/images/fuel-top.svg";
 import FuelLine from "@/assets/images/fuel-line.svg";
 import FuelContents from "@/assets/images/fuel-contents.svg";
 import FuelBottom from "@/assets/images/fuel-bottom.svg";
+import { addVaultsStatus } from "@/recoil/launch/atom";
 
 const VaultModifyModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [ModifyModal, setModifyModal] = useRecoilState(modifyVaultsStatus);
+  const [addVault, setAddVault] = useRecoilState(addVaultsStatus);
   const vaultInfo = [
     {
       vaultName: "Public",
@@ -36,8 +38,13 @@ const VaultModifyModal = () => {
       portion: 6,
     },
   ];
+
+  const closeModal = () => {
+    setModifyModal(false);
+    onClose;
+  };
   return (
-    <Modal isOpen={ModifyModal} onClose={onClose} isCentered>
+    <Modal isOpen={ModifyModal} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent
         height={"540px"}
@@ -60,7 +67,10 @@ const VaultModifyModal = () => {
               mr={"69px"}>
               Modify Vaults
             </Text>
-            <Flex w={"16px"} onClick={onClose} _hover={{ cursor: "pointer" }}>
+            <Flex
+              w={"16px"}
+              onClick={closeModal}
+              _hover={{ cursor: "pointer" }}>
               <Image src={closeIcon} alt="close_icon" />
             </Flex>
           </Flex>
@@ -78,7 +88,8 @@ const VaultModifyModal = () => {
             lineHeight={"normal"}
             fontWeight={600}
             mt={"9px"}
-            cursor={"pointer"}>
+            cursor={"pointer"}
+            onClick={() => setAddVault(true)}>
             + Add a vault
           </Text>
 

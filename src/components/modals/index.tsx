@@ -2,6 +2,7 @@ import TermsModal from "./TermsModal";
 import DualCalendarModal from "./DualCalendarModal";
 import SingleCalendarModal from "./SingleCalendarModal";
 import VaultModifyModal from "./VaultModifyModal";
+import AddVaultModal from "./AddVaultModal";
 export default function Modals() {
   return (
     <>
@@ -9,6 +10,7 @@ export default function Modals() {
       <DualCalendarModal/>
       <SingleCalendarModal/>
       <VaultModifyModal/>
+      <AddVaultModal/>
     </>
   );
 }

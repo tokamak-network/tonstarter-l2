@@ -43,8 +43,7 @@ const EconomyThree = (props: { question: any }) => {
         fontWeight={400}
         color={"#9D9EA5"}
         lineHeight={"21px"}>
-        In order to list on a DEX, set the exchange rate between your project
-        token and TOS.{" "}
+        {question.placeholder}{" "}
         <Tooltip label="Phone number" fontSize="md">
           <QuestionOutlineIcon />
         </Tooltip>
