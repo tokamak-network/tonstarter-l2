@@ -1,6 +1,11 @@
 import { Flex, Text } from "@chakra-ui/react";
+import { useState } from "react";
+import SetUp from "./SetUp";
+import LaunchStatusCheck from "./LaunchStatusCheck";
 
 const Launch = () => {
+  const [setup, setSetup] = useState(true);
+
   return (
     <Flex flexDir={"column"} width={"100%"}>
       <Text
@@ -8,8 +13,9 @@ const Launch = () => {
         fontSize={"21px"}
         lineHeight={"21px"}
         fontWeight={600}>
-        Launch
+        {setup?'Launch':'Launch Status Check'}
       </Text>
+      {setup ? <SetUp setSetUp={setSetup} /> : <LaunchStatusCheck />}
     </Flex>
   );
 };

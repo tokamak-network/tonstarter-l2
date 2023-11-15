@@ -1,6 +1,5 @@
 "use client";
 import { Flex, Text, Button } from "@chakra-ui/react";
-import CarouselSlide from "../CarouselSlide";
 import { useMemo, useState } from "react";
 import EconomyOne from "./EconomyOne";
 import EconomyTwo from "./EconomyTwo";
