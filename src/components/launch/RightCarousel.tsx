@@ -36,7 +36,7 @@ const RightCarousel = () => {
     .swiper {
         width: 100%;
         height:700px;
-        border: 1px solid red;
+       
         padding-left: 60px;
         padding-right:70px
       }

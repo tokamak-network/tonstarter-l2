@@ -7,6 +7,8 @@ import EconomyTwo from "./EconomyTwo";
 import EconomyThree from "./EconomyThree";
 import EconomyFive from "./EconomyFive";
 import EconomyFour from "./EconomyFour";
+import EconomySix from "./EconomySix";
+import EconomySeven from "./EcnomySeven";
 import Image from "next/image";
 import activeArrow from "@/assets/icons/caret-down.png";
 import inactiveArrow from "@/assets/icons/caret-up.png";
@@ -47,7 +49,18 @@ const EconomyCarousel = () => {
       placeholder:
         "Investors invests in your project with TON tokens, which will be exchanged for project tokens in the public vault. However, the investors will not receive the project tokens at once, but will need to claim them periodically. You can modify the settings related to this.",
     },
-    { question: "Schedule your project", value: "", placeholder: "" },
+    {
+      question: "Vesting Schedule",
+      value: "",
+      placeholder:
+        "Project tokens in the public vault will be exchanged for TON tokens from investors. These TON tokens can be spent on the project when periodically being claimed to your project wallet",
+    },
+    {
+      question: "Minimum Launching Conditions",
+      value: "",
+      placeholder:
+        "Project tokens in the public vault will be exchanged for TON tokens from investors. These TON tokens can be spent on the project when periodically being claimed to your project wallet.",
+    },
   ];
 
   const updateIndex = (newIndex: number) => {
@@ -61,10 +74,11 @@ const EconomyCarousel = () => {
   };
 
   const getSlide = (index: number, item: any) => {
+    console.log('index',index);
+    
     switch (index) {
       case 0:
         return <EconomyOne question={item} />;
-
       case 1:
         return <EconomyTwo question={item} />;
       case 2:
@@ -74,6 +88,9 @@ const EconomyCarousel = () => {
       case 4:
         return <EconomyFive question={item} />;
       case 5:
+        return <EconomySix question={item} />;
+        case 6: 
+        return <EconomySeven question={item}/>
     }
   };
 
@@ -81,22 +98,22 @@ const EconomyCarousel = () => {
     switch (activeIndex) {
       case 0:
         return 0;
-
       case 1:
         return -400;
-        case 2:
-          return -800;
-          case 3:
-          return -1200;
-          case 4:
-            return -1840;
-            case 5:
-              return -280;
+      case 2:
+        return -800;
+      case 3:
+        return -1200;
+      case 4:
+        return -1840;
+      case 5:
+        return -2800;
+      case 6:
+        return -3650;
+       
     }
   }, [activeIndex]);
 
-
-  
   return (
     <Flex
       flexDir={"row"}
@@ -113,7 +130,13 @@ const EconomyCarousel = () => {
           overflow={"hidden"}
           alignItems={"center"}>
           <Flex
-            h={activeIndex === 3 ?'615px': activeIndex === 4? "815px" : "400px"}
+            h={
+              activeIndex === 3
+                ? "615px"
+                : activeIndex === 4 || activeIndex === 6
+                ? "690px" : activeIndex === 5 ?'800px'
+                : "400px"
+            }
             className="inner"
             whiteSpace={"nowrap"}
             transition={"transform 0.3s"}
@@ -122,7 +145,11 @@ const EconomyCarousel = () => {
               transform: `translate(0,${getTransition}px)`,
             }}>
             {questions.map((item: any, index: number) => {
-              return <Flex key={index}>{getSlide(index, item)}</Flex>;
+              console.log(
+                
+              );
+              
+              return <Flex key={index}   >{getSlide(index, item)}</Flex>;
             })}
           </Flex>
         </Flex>

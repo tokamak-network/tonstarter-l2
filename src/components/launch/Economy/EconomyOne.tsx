@@ -47,12 +47,6 @@ const EconomyOne = (props: { question: any }) => {
   }) => {
     const { selectedOption, isOpen, setIsOpen, placeHolder } = props;
 
-    console.log(
-      'selectedOption?.value === "Other" && !isOpen',
-      selectedOption?.value === "Other",
-      !isOpen
-    );
-
     if (selectedOption?.value !== "") {
       return (
         <Flex
@@ -140,7 +134,7 @@ const EconomyOne = (props: { question: any }) => {
 
   return (
     <Flex
-    border={'1px solid red'}
+   
       flexDir={"column"}
       mt={"21px"}
       h={ "375px"}

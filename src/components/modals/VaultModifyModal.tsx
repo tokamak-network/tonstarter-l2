@@ -37,6 +37,16 @@ const VaultModifyModal = () => {
       tokenAllocation: 300340000000,
       portion: 6,
     },
+    {
+      vaultName: "Initial Liquidity",
+      tokenAllocation: 1200000000,
+      portion: 6,
+    },
+    {
+      vaultName: "WTON_TOS LP",
+      tokenAllocation: 300340000000,
+      portion: 6,
+    },
   ];
 
   const closeModal = () => {

@@ -3,6 +3,7 @@ import DualCalendarModal from "./DualCalendarModal";
 import SingleCalendarModal from "./SingleCalendarModal";
 import VaultModifyModal from "./VaultModifyModal";
 import AddVaultModal from "./AddVaultModal";
+import EasyModificationModal from "./EasyModificationModal";
 export default function Modals() {
   return (
     <>
@@ -11,6 +12,7 @@ export default function Modals() {
       <SingleCalendarModal/>
       <VaultModifyModal/>
       <AddVaultModal/>
+      <EasyModificationModal/>
     </>
   );
 }

@@ -1,14 +1,14 @@
 import { Flex, chakra, Text, Input } from "@chakra-ui/react";
 import { useMemo } from "react";
 import { useTable, TableOptions, Column } from "react-table";
-import MockData from "./MOCK_DATA.json";
+import MockData from "./MOCK_DATA_Vesting.json";
 
 type MockData = {
   id: number;
   DateTime: string;
   TokenAllocation: string;
 };
-const ClaimScheduleTable = (props: { edit: boolean }) => {
+const VestingTable = (props: { edit: boolean }) => {
   const { edit } = props;
 
   const columnsFormatted: Column<MockData>[] = useMemo(
@@ -199,4 +199,4 @@ const ClaimScheduleTable = (props: { edit: boolean }) => {
   );
 };
 
-export default ClaimScheduleTable;
+export default VestingTable;

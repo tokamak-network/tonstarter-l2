@@ -1,26 +1,27 @@
 import { Flex, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import UserGuide from "@/components/common/UserGuide";
 import Image from "next/image";
-import UserIcon from "@/assets/images/user.svg";
-import LongArrow from "@/assets/icons/LongArrow.svg";
-import LongArrowClock from "@/assets/icons/LongArrowClockRL.svg";
+import RocketBody from "@/assets/images/rocket-body.svg";
+import LongArrowClock from "@/assets/icons/LongArrowClockLR.svg";
 import "font-proxima-nova/style.css";
 import Rocket from "@/assets/images/rocket.svg";
 import { useState } from "react";
-import ClaimScheduleTable from "./ClaimScheduleTable";
 import { easyModificationStatus } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
-const EconomyFive = (props: { question: any }) => {
+import VestingTable from "./VestingTable";
+const EconomySix = (props: { question: any }) => {
   const { question } = props;
   const [defaultStatus, setDefaultStatus] = useState("1");
-const [esyModification, setEasyModification] = useRecoilState(easyModificationStatus)
+  const [esyModification, setEasyModification] = useRecoilState(
+    easyModificationStatus
+  );
   return (
     <Flex
       flexDir={"column"}
       mt={"21px"}
-      height={'890px'}
       mb={"50px"}
       w={"360px"}
+      height={'780px'}
       fontFamily={"Proxima Nova Rg"}>
       <Text
         fontSize={"21px"}
@@ -29,7 +30,7 @@ const [esyModification, setEasyModification] = useRecoilState(easyModificationSt
         mb={"20px"}
         whiteSpace={"break-spaces"}
         color={"#D0D0DA"}>
-        {"5. "}
+        {"6. "}
         {question.question}
       </Text>
       <Text
@@ -44,48 +45,37 @@ const [esyModification, setEasyModification] = useRecoilState(easyModificationSt
       <Flex justifyContent={"flex-start"}>
         <UserGuide />
       </Flex>
-      <Flex mt={"30px"} mb={defaultStatus=== '2'? '0px':"30px"}>
+      <Flex mt={"30px"} mb={defaultStatus === "2" ? "0px" : "30px"}>
         <Flex
-          mt={"-90px"}
           flexDir={"column"}
-          justifyContent={"center"}
-          alignItems={"center"}>
-          <Text color={"#9D9EA5"} fontSize={"13px"} fontWeight={700}>
-            Investors
-          </Text>
-          <Image src={UserIcon} alt="UserIcon" />
+         >
+          <Image src={Rocket} alt="rocket" />
         </Flex>
         <Flex
-          mr={"30px"}
+         
           ml={"23px"}
+          mr={'-15px'}
           flexDir={"column"}
-          justifyContent={"center"}
-          alignItems={"center"}>
-          <Flex width={"100%"} justifyContent={"flex-start"} mt={"10px"}>
+          >
+          <Flex width={"100%"} justifyContent={"space-between"} mt={'70px'}>
+            <Text color={"#9D9EA5"} fontSize={"12px"} fontWeight={500}>
+              TON
+            </Text>
             <Text color={"#9D9EA5"} fontSize={"12px"} fontWeight={500}>
               TON
             </Text>
           </Flex>
 
-          <Image src={LongArrow} alt="LongArrow" />
-          <Flex width={"100%"} justifyContent={"flex-end"} mt={"10px"}>
-            <Text
-              textAlign={"right"}
-              color={"#9D9EA5"}
-              fontSize={"12px"}
-              mr={"-7px"}
-              fontWeight={500}>
-              Project tokens
-            </Text>
-          </Flex>
-          <Image src={LongArrowClock} alt="LongArrowClock" />
-          <Text mt={"3px"} color={"#9D9EA5"} fontSize={"12px"} fontWeight={500}>
-            Claim Schedule
+          
+          <Image src={LongArrowClock} alt="LongArrowClock"  width={180} height={24}/>
+          <Text mt={"3px"} color={"#9D9EA5"} textAlign={'center'} fontSize={"12px"} fontWeight={500}>
+            Vesting Schedule
           </Text>
           <RadioGroup
+           
             onChange={setDefaultStatus}
             value={defaultStatus}
-            mt={"42px"}>
+            mt={"78px"}>
             <Stack
               direction="row"
               fontFamily={"Proxima Nova Rg"}
@@ -99,23 +89,28 @@ const [esyModification, setEasyModification] = useRecoilState(easyModificationSt
             </Stack>
           </RadioGroup>
         </Flex>
-        <Image src={Rocket} alt="rocket" />
+        <Image src={RocketBody} alt="rocket" />
       </Flex>
       {defaultStatus === "2" && (
-        <Flex mt={"20px"} mb={'12px'}>
+        <Flex mt={"20px"} mb={"12px"}>
           <Flex
             fontSize={"13px"}
             fontWeight={400}
             letterSpacing={"0.26px"}
             columnGap={"6px"}>
             <Text color={"#9D9EA5"}>Easy Modification</Text>
-            <Text color={"#0070ED"} onClick={() => setEasyModification(true)} cursor={'pointer'}>Click</Text>
+            <Text
+              color={"#0070ED"}
+              onClick={() => setEasyModification(true)}
+              cursor={"pointer"}>
+              Click
+            </Text>
           </Flex>
         </Flex>
       )}
-      <ClaimScheduleTable edit={defaultStatus==='2'} />
+      <VestingTable edit={defaultStatus === "2"} />
     </Flex>
   );
 };
 
-export default EconomyFive;
+export default EconomySix;

@@ -146,7 +146,7 @@ const EconomyTwo = (props: { question: any }) => {
 
   return (
     <Flex
-      border={"1px solid red"}
+      
       flexDir={"column"}
       mt={"21px"}
       h={"375px"}
