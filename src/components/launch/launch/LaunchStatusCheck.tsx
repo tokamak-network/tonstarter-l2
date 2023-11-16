@@ -1,22 +1,32 @@
-import { Flex, Text, Button, Checkbox, CheckboxGroup } from "@chakra-ui/react";
-import Image from "next/image";
-import activeArrow from "@/assets/icons/caret-down.png";
-import inactiveArrow from "@/assets/icons/caret-up.png";
+import {
+  Flex,
+  Text,
+  Button,
+  Tooltip,
+} from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { createStatus } from "@/recoil/launch/atom";
-import { useState, useMemo } from "react";
-import smallRocket from "@/assets/images/small_rocket.svg";
+import { useState } from "react";
+import "font-proxima-nova/style.css";
+import RocketComponent from "./RocketComponent";
+import ProgressComponent from "./ProgressComponent";
 const LaunchStatusCheck = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [projectStatus, setProjectStatus] = useRecoilState(createStatus);
 
+  
   return (
-    <Flex flexDir={"row"} alignItems={"center"} w={"100%"} height={"100%"}>
-      <Flex flexDir={'column'}>
-        <Text>Deadline</Text>
-        <Text>08:04:48:41</Text>
-      </Flex>
-      <Flex></Flex>
+    <Flex
+      flexDir={"row"}
+     
+      w={"100%"}
+      height={"100%"}
+      fontFamily={"Proxima Nova Rg"}
+      fontSize={"12px"}
+      fontWeight={500}>
+     <RocketComponent/>
+
+      <ProgressComponent/>
     </Flex>
   );
 };

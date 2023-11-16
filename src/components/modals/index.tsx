@@ -4,6 +4,8 @@ import SingleCalendarModal from "./SingleCalendarModal";
 import VaultModifyModal from "./VaultModifyModal";
 import AddVaultModal from "./AddVaultModal";
 import EasyModificationModal from "./EasyModificationModal";
+import WalletCheckModal from "./WalletCheckModal";
+import GasCheckModal from "./GasCheckModal";
 export default function Modals() {
   return (
     <>
@@ -13,6 +15,8 @@ export default function Modals() {
       <VaultModifyModal/>
       <AddVaultModal/>
       <EasyModificationModal/>
+      <WalletCheckModal/>
+      <GasCheckModal/>
     </>
   );
 }

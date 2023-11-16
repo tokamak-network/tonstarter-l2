@@ -15,22 +15,32 @@ export const setUpStatus = atom<boolean>({
   default: false,
 });
 
-export const dualCalendarStatus = atom <any>({
+export const dualCalendarStatus = atom<any>({
   key: "dualCalendarStatus",
-  default: '',
-})
+  default: "",
+});
 
 export const modifyVaultsStatus = atom<boolean>({
   key: "modifyVaultsStatus",
   default: false,
-})
+});
 
 export const addVaultsStatus = atom<boolean>({
   key: "addVaultsStatus",
   default: false,
-})
+});
 
 export const easyModificationStatus = atom<boolean>({
   key: "easyModificationStatus",
   default: false,
-})
+});
+
+export const walletCheckStatus = atom<boolean>({
+  key: "walletCheckStatus",
+  default: false,
+});
+
+export const gasCheckStatus = atom<boolean>({
+  key: "gasCheckStatus",
+  default: false,
+});
