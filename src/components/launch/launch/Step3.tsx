@@ -2,27 +2,24 @@ import { Flex, Button, Text, Stack } from "@chakra-ui/react";
 import "font-proxima-nova/style.css";
 import Image from "next/image";
 import Tick from "@/assets/icons/Tick.svg";
-import {
- 
-  modalStatus,
-} from "@/recoil/launch/atom";
+import { modalStatus,vaultStatus } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
-import { SetStateAction, useState } from "react";
+import { SetStateAction } from "react";
 
 const Step3 = (props: {
   step3Completed: boolean;
   setStep3Completed: React.Dispatch<SetStateAction<boolean>>;
 }) => {
   const { step3Completed, setStep3Completed } = props;
-  const [modalType, setModalType] = useRecoilState(modalStatus)
-
+  const [modalType, setModalType] = useRecoilState(modalStatus);
+const [vaultInfo, setVaultInfo] = useRecoilState(vaultStatus)
   const step3Steps = [
     { step: "Initial Liquidity", status: true },
     { step: "Vesting", status: true },
     { step: "Public Sale", status: true },
     { step: "TON Staker", status: true },
     { step: "TOS Staker", status: true },
-    { step: "WTON-TOS LP REward", status: true },
+    { step: "WTON-TOS LP Reward", status: true },
     { step: "Liquidity Incentive", status: true },
     { step: "Ecosystem", status: true },
     { step: "Team", status: true },
@@ -30,8 +27,8 @@ const Step3 = (props: {
 
   const allChecked = step3Steps.every((step) => step.status === true);
 
-  const CheckMark = (props: { status: boolean; index: number }) => {
-    const { status, index } = props;
+  const CheckMark = (props: { status: boolean; index: number, step:any }) => {
+    const { status, step } = props;
     return (
       <Flex
         height={18}
@@ -42,7 +39,12 @@ const Step3 = (props: {
         borderRadius={"4px"}
         cursor={"pointer"}
         bg={status ? "#2A72E5" : ""}
-        onClick={() => setModalType('Vault')}>
+        onClick={() =>{
+          setVaultInfo({
+            name: step.step
+          })
+           setModalType("Vault");
+           }}>
         {status && <Image src={Tick} alt="check box" height={9} width={9} />}
       </Flex>
     );
@@ -75,7 +77,11 @@ const Step3 = (props: {
               (<span style={{ color: "#D0D0DA" }}>2</span>/4)
             </span>
           </Text>
-          <Flex   lineHeight={"normal"} rowGap={"9px"} flexDir={"column"} mt={"18px"}>
+          <Flex
+            lineHeight={"normal"}
+            rowGap={"9px"}
+            flexDir={"column"}
+            mt={"18px"}>
             {step3Steps.map((step: any, index: number) => {
               const nextStatus =
                 index !== 8 ? step3Steps[index + 1].status : step.status;
@@ -84,7 +90,7 @@ const Step3 = (props: {
               const illuminate = prevStatus && !nextStatus;
               return (
                 <Flex key={index} columnGap={"9px"}>
-                  <CheckMark status={step.status} index={index} />
+                  <CheckMark status={step.status} index={index} step={step}/>
                   <Text
                     fontSize={"13px"}
                     color={illuminate ? "#fff" : "#9D9EA5"}

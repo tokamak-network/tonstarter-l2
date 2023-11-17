@@ -5,16 +5,12 @@ import {
   ModalOverlay,
   ModalContent,
   useDisclosure,
-  Button
+  Button,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import "font-proxima-nova/style.css";
 import { useRecoilState } from "recoil";
 import closeIcon from "@/assets/icons/modal_close.svg";
-import FuelTop from "@/assets/images/fuel-top.svg";
-import FuelLine from "@/assets/images/fuel-line.svg";
-import FuelContents from "@/assets/images/fuel-contents.svg";
-import FuelBottom from "@/assets/images/fuel-bottom.svg";
 import { modalStatus } from "@/recoil/launch/atom";
 import WalletIcon from "@/assets/icons/Wallet.svg";
 import { useAccount } from "wagmi";
@@ -22,17 +18,15 @@ import { trimAddress } from "@/utils";
 
 const WalletCheckModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-
-    const [modalType, setModalType] = useRecoilState(modalStatus)
-  const { isConnected, address } = useAccount();
+  const [modalType, setModalType] = useRecoilState(modalStatus);
+  const { address } = useAccount();
 
   const closeModal = () => {
-    setModalType('')
+    setModalType("");
     onClose;
   };
   return (
-    <Modal isOpen={modalType === 'WalletCheck'} onClose={closeModal} isCentered>
+    <Modal isOpen={modalType === "WalletCheck"} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent
         height={"508px"}
@@ -90,29 +84,24 @@ const WalletCheckModal = () => {
             justifyContent={"center"}
             alignItems={"center"}
             bg={"#252525"}>
-            <Text
-              fontSize={"15px"}
-              fontWeight={600}
-              color={"#fff"}
-            >
-              {trimAddress({ address: address,  firstChar: 14, lastChar: 14 })}
+            <Text fontSize={"15px"} fontWeight={600} color={"#fff"}>
+              {trimAddress({ address: address, firstChar: 14, lastChar: 14 })}
             </Text>
           </Flex>
           <Button
-          w="150px"
-          h="40px"
-          borderRadius={"20px"}
-          fontSize={"15px"}
-          bg={"#0070ED"}
-          color={"#fff"}
-          fontWeight={600}
-          mt={'45px'}
-          _disabled={{ bg: "#353535", color: "#838383" }}
-          _hover={{ bg: "#0057E6" }}
-          onClick={()=>closeModal()}
-         
-          >Checked
-            </Button>
+            w="150px"
+            h="40px"
+            borderRadius={"20px"}
+            fontSize={"15px"}
+            bg={"#0070ED"}
+            color={"#fff"}
+            fontWeight={600}
+            mt={"45px"}
+            _disabled={{ bg: "#353535", color: "#838383" }}
+            _hover={{ bg: "#0057E6" }}
+            onClick={() => closeModal()}>
+            Checked
+          </Button>
         </Flex>
       </ModalContent>
     </Modal>
