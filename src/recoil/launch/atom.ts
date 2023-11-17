@@ -44,3 +44,8 @@ export const gasCheckStatus = atom<boolean>({
   key: "gasCheckStatus",
   default: false,
 });
+
+export const l2TokenStatus = atom<boolean>({
+  key: "l2TokenStatus",
+  default: false,
+});

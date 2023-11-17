@@ -2,13 +2,17 @@ import { Flex, Checkbox, CheckboxGroup, Text, Stack } from "@chakra-ui/react";
 import "font-proxima-nova/style.css";
 import Image from "next/image";
 import Tick from "@/assets/icons/Tick.svg";
-import { walletCheckStatus, gasCheckStatus } from "@/recoil/launch/atom";
+import {
+  walletCheckStatus,
+  gasCheckStatus,
+  l2TokenStatus,
+} from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
 const ProgressComponent = () => {
-    const [walletCheckModal, setWalletCheckModal] =
+  const [walletCheckModal, setWalletCheckModal] =
     useRecoilState(walletCheckStatus);
-    const [gasCheckModal, setGasCheckModal] =
-    useRecoilState(gasCheckStatus);
+  const [gasCheckModal, setGasCheckModal] = useRecoilState(gasCheckStatus);
+  const [l2TokenModal, setL2TokenModal] = useRecoilState(l2TokenStatus);
 
   const step1Steps = [
     { step: "Check your wallet", status: false },
@@ -17,19 +21,20 @@ const ProgressComponent = () => {
     { step: "Your L2 project token", status: false },
   ];
 
-
   const openModal = (index: number) => {
     switch (index) {
       case 0:
         return setWalletCheckModal(true);
 
-        case 1: 
-        return setGasCheckModal(true)
+      case 1:
+        return setGasCheckModal(true);
+      case 2:
+        return setL2TokenModal(true);
     }
   };
 
-  const CheckMark = (props: { status: boolean, index:number }) => {
-    const { status,index } = props;
+  const CheckMark = (props: { status: boolean; index: number }) => {
+    const { status, index } = props;
     return (
       <Flex
         height={18}
@@ -38,8 +43,9 @@ const ProgressComponent = () => {
         justifyContent={"center"}
         alignItems={"center"}
         borderRadius={"4px"}
-        cursor={'pointer'}
-        bg={status ? "#2A72E5" : ""} onClick={()=> openModal(index)}>
+        cursor={"pointer"}
+        bg={status ? "#2A72E5" : ""}
+        onClick={() => openModal(index)}>
         {status && <Image src={Tick} alt="check box" height={9} width={9} />}
       </Flex>
     );
@@ -59,7 +65,7 @@ const ProgressComponent = () => {
           const illuminate = prevStatus && !nextStatus;
           return (
             <Flex key={index} columnGap={"9px"}>
-              <CheckMark status={step.status} index={index}/>
+              <CheckMark status={step.status} index={index} />
               <Text
                 fontSize={"13px"}
                 color={illuminate ? "#fff" : "#9D9EA5"}
