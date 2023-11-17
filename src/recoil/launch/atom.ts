@@ -49,3 +49,8 @@ export const l2TokenStatus = atom<boolean>({
   key: "l2TokenStatus",
   default: false,
 });
+
+export const l1TokenStatus = atom<boolean>({
+  key: "l1TokenStatus",
+  default: false,
+});

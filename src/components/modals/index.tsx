@@ -6,6 +6,8 @@ import AddVaultModal from "./AddVaultModal";
 import EasyModificationModal from "./EasyModificationModal";
 import WalletCheckModal from "./WalletCheckModal";
 import GasCheckModal from "./GasCheckModal";
+import L2ProjectTokenModal from "./L2ProjectTokenModal";
+import L1ProjectTokenModal from "./L1ProjectTokenModal";
 export default function Modals() {
   return (
     <>
@@ -17,6 +19,8 @@ export default function Modals() {
       <EasyModificationModal/>
       <WalletCheckModal/>
       <GasCheckModal/>
+      <L2ProjectTokenModal/>
+      <L1ProjectTokenModal/>
     </>
   );
 }

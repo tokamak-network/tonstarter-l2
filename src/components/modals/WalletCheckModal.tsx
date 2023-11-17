@@ -95,7 +95,7 @@ const WalletCheckModal = () => {
               fontWeight={600}
               color={"#fff"}
             >
-              {trimAddress({ address: address, firstChar: 14, lastChar: 14 })}
+              {trimAddress({ address: address,  firstChar: 14, lastChar: 14 })}
             </Text>
           </Flex>
           <Button
