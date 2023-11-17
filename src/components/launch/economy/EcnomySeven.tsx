@@ -19,15 +19,11 @@ import RocketFin from "@/assets/images/Rocket_Fin.svg";
 import { useState } from "react";
 import ArrowActive from "@/assets/icons/Forward_inactive.svg";
 import ArrowInactive from "@/assets/icons/Forward.svg";
-import { easyModificationStatus } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
 import { QuestionOutlineIcon } from "@chakra-ui/icons";
+
 const EconomySeven = (props: { question: any }) => {
   const { question } = props;
-  const [defaultStatus, setDefaultStatus] = useState("1");
-  const [esyModification, setEasyModification] = useRecoilState(
-    easyModificationStatus
-  );
 
   const styles = `
   input {

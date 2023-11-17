@@ -3,10 +3,8 @@ import "font-proxima-nova/style.css";
 import Image from "next/image";
 import Tick from "@/assets/icons/Tick.svg";
 import {
-  walletCheckStatus,
-  gasCheckStatus,
-  l2TokenStatus,
-  l1TokenStatus,
+ 
+  modalStatus,
 } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
 import { SetStateAction, useState } from "react";
@@ -16,12 +14,7 @@ const Step3 = (props: {
   setStep3Completed: React.Dispatch<SetStateAction<boolean>>;
 }) => {
   const { step3Completed, setStep3Completed } = props;
-  const [walletCheckModal, setWalletCheckModal] =
-    useRecoilState(walletCheckStatus);
-  const [gasCheckModal, setGasCheckModal] = useRecoilState(gasCheckStatus);
-  const [l2TokenModal, setL2TokenModal] = useRecoilState(l2TokenStatus);
-  const [l1TokenModal, setL1TokenModal] = useRecoilState(l1TokenStatus);
-  const [deployed, setDeployed] = useState(false);
+  const [modalType, setModalType] = useRecoilState(modalStatus)
 
   const step3Steps = [
     { step: "Initial Liquidity", status: true },
@@ -34,20 +27,6 @@ const Step3 = (props: {
     { step: "Ecosystem", status: true },
     { step: "Team", status: true },
   ];
-
-  const openModal = (index: number) => {
-    switch (index) {
-      case 0:
-        return setWalletCheckModal(true);
-
-      case 1:
-        return setGasCheckModal(true);
-      case 2:
-        return setL1TokenModal(true);
-      case 3:
-        return setL2TokenModal(true);
-    }
-  };
 
   const allChecked = step3Steps.every((step) => step.status === true);
 
@@ -63,7 +42,7 @@ const Step3 = (props: {
         borderRadius={"4px"}
         cursor={"pointer"}
         bg={status ? "#2A72E5" : ""}
-        onClick={() => openModal(index)}>
+        onClick={() => setModalType('Vault')}>
         {status && <Image src={Tick} alt="check box" height={9} width={9} />}
       </Flex>
     );

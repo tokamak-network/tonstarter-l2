@@ -9,30 +9,30 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import "font-proxima-nova/style.css";
-import { modifyVaultsStatus } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
 import closeIcon from "@/assets/icons/modal_close.svg";
 import FuelTop from "@/assets/images/fuel-top.svg";
 import FuelLine from "@/assets/images/fuel-line.svg";
 import FuelContents from "@/assets/images/fuel-contents.svg";
 import FuelBottom from "@/assets/images/fuel-bottom.svg";
-import { walletCheckStatus } from "@/recoil/launch/atom";
+import { modalStatus } from "@/recoil/launch/atom";
 import WalletIcon from "@/assets/icons/Wallet.svg";
 import { useAccount } from "wagmi";
 import { trimAddress } from "@/utils";
 
 const WalletCheckModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [walletCheckModal, setWalletCheckModal] =
-    useRecoilState(walletCheckStatus);
+
+
+    const [modalType, setModalType] = useRecoilState(modalStatus)
   const { isConnected, address } = useAccount();
 
   const closeModal = () => {
-    setWalletCheckModal(false);
+    setModalType('')
     onClose;
   };
   return (
-    <Modal isOpen={walletCheckModal} onClose={closeModal} isCentered>
+    <Modal isOpen={modalType === 'WalletCheck'} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent
         height={"508px"}

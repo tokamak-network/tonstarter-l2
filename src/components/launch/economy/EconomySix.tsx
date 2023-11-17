@@ -6,15 +6,15 @@ import LongArrowClock from "@/assets/icons/LongArrowClockLR.svg";
 import "font-proxima-nova/style.css";
 import Rocket from "@/assets/images/rocket.svg";
 import { useState } from "react";
-import { easyModificationStatus } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
 import VestingTable from "./VestingTable";
+import { modalStatus } from "@/recoil/launch/atom";
 const EconomySix = (props: { question: any }) => {
   const { question } = props;
   const [defaultStatus, setDefaultStatus] = useState("1");
-  const [esyModification, setEasyModification] = useRecoilState(
-    easyModificationStatus
-  );
+
+  const [modalType, setModalType] = useRecoilState(modalStatus)
+
   return (
     <Flex
       flexDir={"column"}
@@ -101,7 +101,7 @@ const EconomySix = (props: { question: any }) => {
             <Text color={"#9D9EA5"}>Easy Modification</Text>
             <Text
               color={"#0070ED"}
-              onClick={() => setEasyModification(true)}
+              onClick={() => setModalType('EasyModification')}
               cursor={"pointer"}>
               Click
             </Text>

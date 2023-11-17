@@ -1,5 +1,5 @@
 import { atom, selector } from "recoil";
-
+import { ModalType } from "@/types/modal/modalTypes";
 export const createStatus = atom<number>({
   key: "createStatus",
   default: 0,
@@ -20,37 +20,11 @@ export const dualCalendarStatus = atom<any>({
   default: "",
 });
 
-export const modifyVaultsStatus = atom<boolean>({
-  key: "modifyVaultsStatus",
-  default: false,
-});
-
-export const addVaultsStatus = atom<boolean>({
-  key: "addVaultsStatus",
-  default: false,
-});
-
-export const easyModificationStatus = atom<boolean>({
-  key: "easyModificationStatus",
-  default: false,
-});
-
-export const walletCheckStatus = atom<boolean>({
-  key: "walletCheckStatus",
-  default: false,
-});
-
-export const gasCheckStatus = atom<boolean>({
-  key: "gasCheckStatus",
-  default: false,
-});
-
-export const l2TokenStatus = atom<boolean>({
-  key: "l2TokenStatus",
-  default: false,
-});
-
-export const l1TokenStatus = atom<boolean>({
-  key: "l1TokenStatus",
-  default: false,
+export const modalStatus = atom<ModalType | ''>({
+  key: 'modalStatus',
+  default:''
+})
+export const vaultStatus = atom<any>({
+  key: "vaultStatus",
+  default: {},
 });

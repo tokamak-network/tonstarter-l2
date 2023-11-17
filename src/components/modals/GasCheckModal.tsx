@@ -10,14 +10,13 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import "font-proxima-nova/style.css";
-import { modifyVaultsStatus } from "@/recoil/launch/atom";
+import { modalStatus } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
 import closeIcon from "@/assets/icons/modal_close.svg";
 import FuelTop from "@/assets/images/fuel-top.svg";
 import FuelLine from "@/assets/images/fuel-line.svg";
 import FuelContents from "@/assets/images/fuel-contents.svg";
 import FuelBottom from "@/assets/images/fuel-bottom.svg";
-import { gasCheckStatus } from "@/recoil/launch/atom";
 import GasIcon from "@/assets/icons/gas-graphic.svg";
 import { useAccount } from "wagmi";
 import { trimAddress } from "@/utils";
@@ -27,21 +26,19 @@ import { QuestionOutlineIcon } from "@chakra-ui/icons";
 
 const GasCheckModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [gasCheckModal, setGasCheckModal] = useRecoilState(gasCheckStatus);
   const { isConnected, address } = useAccount();
+  const [modalType, setModalType] = useRecoilState(modalStatus)
 
   const closeModal = () => {
-    setGasCheckModal(false);
+    setModalType('');
     onClose;
   };
 
   const tokenData = useTokenBalance(supportedTokens[0]);
-  console.log("tokenData", tokenData);
-
   const recommended = 1.11;
 
   return (
-    <Modal isOpen={gasCheckModal} onClose={closeModal} isCentered>
+    <Modal isOpen={modalType==='GasCheck'} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent
         maxW="340px"

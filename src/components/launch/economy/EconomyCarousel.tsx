@@ -132,7 +132,7 @@ const EconomyCarousel = () => {
             h={
               activeIndex === 3
                 ? "615px"
-                : activeIndex === 4 || activeIndex === 6
+                : activeIndex === 4 ?'960px': activeIndex === 6
                 ? "690px" : activeIndex === 5 ?'800px'
                 : "400px"
             }

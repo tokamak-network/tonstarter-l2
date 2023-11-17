@@ -8,13 +8,14 @@ import "font-proxima-nova/style.css";
 import Rocket from "@/assets/images/rocket.svg";
 import { useState } from "react";
 import ClaimScheduleTable from "./ClaimScheduleTable";
-import { easyModificationStatus } from "@/recoil/launch/atom";
+import {  modalStatus } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
 const EconomyFive = (props: { question: any }) => {
   const { question } = props;
   const [defaultStatus, setDefaultStatus] = useState("1");
-const [esyModification, setEasyModification] = useRecoilState(easyModificationStatus)
-  return (
+const [modalType, setModalType] = useRecoilState(modalStatus)
+
+return (
     <Flex
       flexDir={"column"}
       mt={"21px"}
@@ -109,7 +110,7 @@ const [esyModification, setEasyModification] = useRecoilState(easyModificationSt
             letterSpacing={"0.26px"}
             columnGap={"6px"}>
             <Text color={"#9D9EA5"}>Easy Modification</Text>
-            <Text color={"#0070ED"} onClick={() => setEasyModification(true)} cursor={'pointer'}>Click</Text>
+            <Text color={"#0070ED"} onClick={() => setModalType('EasyModification')} cursor={'pointer'}>Click</Text>
           </Flex>
         </Flex>
       )}

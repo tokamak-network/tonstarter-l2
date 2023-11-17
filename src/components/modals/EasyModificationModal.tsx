@@ -10,23 +10,21 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import "font-proxima-nova/style.css";
-import { modifyVaultsStatus } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
 import closeIcon from "@/assets/icons/modal_close.svg";
 import FuelTop from "@/assets/images/fuel-top.svg";
 import FuelLine from "@/assets/images/fuel-line.svg";
 import FuelContents from "@/assets/images/fuel-contents.svg";
 import FuelBottom from "@/assets/images/fuel-bottom.svg";
-import { easyModificationStatus } from "@/recoil/launch/atom";
+import {  modalStatus } from "@/recoil/launch/atom";
 
 const EasyModificationModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [easyModification, setEasyModification] = useRecoilState(
-    easyModificationStatus
-  );
+
+  const [modalType, setModalType] = useRecoilState(modalStatus)
 
   const closeModal = () => {
-    setEasyModification(false);
+    setModalType('');
     onClose;
   };
 
@@ -37,7 +35,7 @@ const EasyModificationModal = () => {
     {question: "Token Allocation",placeholder: "Enter Token Allocation"},
   ];
   return (
-    <Modal isOpen={easyModification} onClose={closeModal} isCentered>
+    <Modal isOpen={modalType==='EasyModification'} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent
       

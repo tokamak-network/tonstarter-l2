@@ -10,21 +10,20 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import "font-proxima-nova/style.css";
-import { modifyVaultsStatus } from "@/recoil/launch/atom";
+import { modalStatus } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
 import closeIcon from "@/assets/icons/modal_close.svg";
 import FuelTop from "@/assets/images/fuel-top.svg";
 import FuelLine from "@/assets/images/fuel-line.svg";
 import FuelContents from "@/assets/images/fuel-contents.svg";
 import FuelBottom from "@/assets/images/fuel-bottom.svg";
-import { addVaultsStatus } from "@/recoil/launch/atom";
 
 const AddVaultModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [addVault, setAddVault] = useRecoilState(addVaultsStatus);
+  const [modalType, setModalType] = useRecoilState(modalStatus)
 
   const closeModal = () => {
-    setAddVault(false);
+    setModalType('ModifyVault');
     onClose;
   };
 
@@ -37,7 +36,7 @@ const AddVaultModal = () => {
     },
   ];
   return (
-    <Modal isOpen={addVault} onClose={closeModal} isCentered>
+    <Modal isOpen={modalType==='AddVault'} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent
         height={"478px"}

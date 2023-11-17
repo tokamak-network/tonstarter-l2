@@ -20,7 +20,7 @@ import ArrowGroup from "@/assets/icons/arrowGroup.svg";
 import "font-proxima-nova/style.css";
 import * as d3 from "d3";
 import { useRecoilState } from "recoil";
-import { modifyVaultsStatus } from "@/recoil/launch/atom";
+import { modalStatus } from "@/recoil/launch/atom";
 
 type Vault = {
   vaultName: string;
@@ -30,13 +30,13 @@ type Vault = {
 const EconomyFour = (props: { question: any }) => {
   const { question } = props;
   const [defaultStatus, setDefaultStatus] = useState("1");
-  const [modifyVault, setModifyVault] = useRecoilState(modifyVaultsStatus);
+  const [modalType, setModalType] = useRecoilState(modalStatus)
 
   useEffect(() => {
     if (defaultStatus === "2") {
-      setModifyVault(true);
+      setModalType('ModifyVault');
     }
-  }, [defaultStatus, setModifyVault]);
+  }, [defaultStatus, setModalType]);
 
   const [vaults] = useState([
     {

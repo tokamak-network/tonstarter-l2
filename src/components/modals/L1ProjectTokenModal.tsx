@@ -12,16 +12,16 @@ import Image from "next/image";
 import "font-proxima-nova/style.css";
 import { useRecoilState } from "recoil";
 import closeIcon from "@/assets/icons/modal_close.svg";
-import { l1TokenStatus } from "@/recoil/launch/atom";
+import {  modalStatus } from "@/recoil/launch/atom";
 import { useAccount } from "wagmi";
 
 const L1ProjectTokenModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [l1TokenModal, setL1TokenModal] = useRecoilState(l1TokenStatus);
   const { isConnected, address } = useAccount();
+  const [modalType, setModalType] = useRecoilState(modalStatus)
 
   const closeModal = () => {
-    setL1TokenModal(false);
+    setModalType('');
     onClose;
   };
 
@@ -31,7 +31,7 @@ const L1ProjectTokenModal = () => {
     { name: "Token Supply", value: "10,0000,000 MARS" },
   ];
   return (
-    <Modal isOpen={l1TokenModal} onClose={closeModal} isCentered>
+    <Modal isOpen={modalType==='L1TokenStatus'} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent
         maxW="340px"

@@ -10,14 +10,13 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import "font-proxima-nova/style.css";
-import { modifyVaultsStatus } from "@/recoil/launch/atom";
+import { modalStatus } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
 import closeIcon from "@/assets/icons/modal_close.svg";
 import FuelTop from "@/assets/images/fuel-top.svg";
 import FuelLine from "@/assets/images/fuel-line.svg";
 import FuelContents from "@/assets/images/fuel-contents.svg";
 import FuelBottom from "@/assets/images/fuel-bottom.svg";
-import { l2TokenStatus } from "@/recoil/launch/atom";
 import GasIcon from "@/assets/icons/gas-graphic.svg";
 import { useAccount } from "wagmi";
 import { trimAddress } from "@/utils";
@@ -27,11 +26,11 @@ import { QuestionOutlineIcon } from "@chakra-ui/icons";
 
 const L2ProjectTokenModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [l2TokenModal, setL2TokenModal] = useRecoilState(l2TokenStatus);
   const { isConnected, address } = useAccount();
+  const [modalType, setModalType] = useRecoilState(modalStatus)
 
   const closeModal = () => {
-    setL2TokenModal(false);
+    setModalType('');
     onClose;
   };
 
@@ -41,7 +40,7 @@ const L2ProjectTokenModal = () => {
     { name: "Token Supply", value: "10,0000,000 MARS" },
   ];
   return (
-    <Modal isOpen={l2TokenModal} onClose={closeModal} isCentered>
+    <Modal isOpen={modalType==='L2TokenStatus'} onClose={closeModal} isCentered>
       <ModalOverlay />
       <ModalContent
         maxW="340px"

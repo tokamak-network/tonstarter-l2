@@ -3,10 +3,7 @@ import "font-proxima-nova/style.css";
 import Image from "next/image";
 import Tick from "@/assets/icons/Tick.svg";
 import {
-  walletCheckStatus,
-  gasCheckStatus,
-  l2TokenStatus,
-  l1TokenStatus,
+  modalStatus,
 } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
 import { SetStateAction, useState } from "react";
@@ -16,12 +13,7 @@ const Step1 = (props: {
   setStep1Completed: React.Dispatch<SetStateAction<boolean>>;
 }) => {
   const { step1Completed, setStep1Completed } = props;
-  const [walletCheckModal, setWalletCheckModal] =
-    useRecoilState(walletCheckStatus);
-  const [gasCheckModal, setGasCheckModal] = useRecoilState(gasCheckStatus);
-  const [l2TokenModal, setL2TokenModal] = useRecoilState(l2TokenStatus);
-  const [l1TokenModal, setL1TokenModal] = useRecoilState(l1TokenStatus);
-  const [deployed, setDeployed] = useState(false);
+    const [modalType, setModalType] = useRecoilState(modalStatus)
   const step1Steps = [
     { step: "Check your wallet", status: true },
     { step: "Check your gas", status: true },
@@ -32,14 +24,14 @@ const Step1 = (props: {
   const openModal = (index: number) => {
     switch (index) {
       case 0:
-        return setWalletCheckModal(true);
+        return setModalType('WalletCheck');
 
       case 1:
-        return setGasCheckModal(true);
+        return setModalType('GasCheck')
       case 2:
-        return setL1TokenModal(true);
+        return setModalType('L1TokenStatus');
       case 3:
-        return setL2TokenModal(true);
+        return setModalType('L2TokenStatus');
     }
   };
 
