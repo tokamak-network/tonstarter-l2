@@ -58,7 +58,7 @@ const [vaultInfo, setVaultInfo] = useRecoilState(vaultStatus)
         flexDir={"column"}
         fontFamily={"Proxima Nova Rg"}>
         <Text color={"#64646F"} fontSize={"16px"} fontWeight={400}>
-          Deploy finished (4)
+          Deploy finished (9)
         </Text>
       </Flex>
     );
@@ -74,7 +74,7 @@ const [vaultInfo, setVaultInfo] = useRecoilState(vaultStatus)
           <Text fontSize={"16px"} fontWeight={600} color={"#D0D0DA"}>
             Click and check{" "}
             <span style={{ color: "#64646F" }}>
-              (<span style={{ color: "#D0D0DA" }}>2</span>/4)
+              (<span style={{ color: "#D0D0DA" }}>1</span>/9)
             </span>
           </Text>
           <Flex
