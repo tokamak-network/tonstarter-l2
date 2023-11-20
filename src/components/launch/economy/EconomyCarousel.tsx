@@ -72,9 +72,7 @@ const EconomyCarousel = () => {
     setActiveIndex(newIndex);
   };
 
-  const getSlide = (index: number, item: any) => {
-    console.log('index',index);
-    
+  const getSlide = (index: number, item: any) => {    
     switch (index) {
       case 0:
         return <EconomyOne question={item} />;
@@ -144,9 +142,6 @@ const EconomyCarousel = () => {
               transform: `translate(0,${getTransition}px)`,
             }}>
             {questions.map((item: any, index: number) => {
-              console.log(
-                
-              );
               
               return <Flex key={index}   >{getSlide(index, item)}</Flex>;
             })}

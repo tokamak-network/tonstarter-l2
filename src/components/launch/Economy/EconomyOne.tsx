@@ -103,7 +103,6 @@ const EconomyOne = (props: { question: any }) => {
   ];
   const CustomOption = (props: { data: any }) => {
     const { data } = props;
-    console.log("data", data);
 
     return (
       <Flex
@@ -134,10 +133,9 @@ const EconomyOne = (props: { question: any }) => {
 
   return (
     <Flex
-   
       flexDir={"column"}
       mt={"21px"}
-      h={ "375px"}
+      h={"375px"}
       w={"360px"}
       fontFamily={"Proxima Nova Rg"}>
       <Text
@@ -223,9 +221,9 @@ const EconomyOne = (props: { question: any }) => {
               _focusVisible={{
                 borderBottom: "1px solid #0070ED !important",
               }}
-            _hover={{borderBottom:'1px solid #0070ED !important'}}
-              paddingRight={'20px'}
-              paddingLeft={'20px'}
+              _hover={{ borderBottom: "1px solid #0070ED !important" }}
+              paddingRight={"20px"}
+              paddingLeft={"20px"}
               h={"51px"}
             />
           </NumberInput>

@@ -52,13 +52,6 @@ const EconomyTwo = (props: { question: any }) => {
     placeHolder: string;
   }) => {
     const { selectedOption, isOpen, setIsOpen, placeHolder } = props;
-
-    console.log(
-      'selectedOption?.value === "Other" && !isOpen',
-      selectedOption?.value === "Other",
-      !isOpen
-    );
-
     if (selectedOption?.value !== "") {
       return (
         <Flex
@@ -115,7 +108,6 @@ const EconomyTwo = (props: { question: any }) => {
   ];
   const CustomOption = (props: { data: any }) => {
     const { data } = props;
-    console.log("data", data);
 
     return (
       <Flex
@@ -146,7 +138,6 @@ const EconomyTwo = (props: { question: any }) => {
 
   return (
     <Flex
-      
       flexDir={"column"}
       mt={"21px"}
       h={"375px"}

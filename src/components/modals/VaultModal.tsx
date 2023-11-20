@@ -28,8 +28,6 @@ const VaultModal = () => {
     onClose;
   };
 
-  console.log("vaultInfo", vaultInfo);
-
   return (
     <Modal isOpen={modalType === "Vault"} onClose={closeModal} isCentered>
       <ModalOverlay />

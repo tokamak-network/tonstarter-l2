@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-
+import ParticipateLayout from "@/components/participate/ParticipateLayout";
 
 export const metadata = {
     title: 'Tonstarter L2 - Launch',
@@ -9,7 +9,9 @@ export const metadata = {
 const Participate = () => {
 
     return (
-        <Flex color={'white'}  style={{flex: 1}}>Participate</Flex>
+        <Flex color={'white'}  style={{flex: 1}}>
+            <ParticipateLayout/>
+        </Flex>
     )
 }
 

@@ -8,6 +8,9 @@ import { WagmiProviders } from "@/providers/wagmiProvider";
 import { RecoilRoot } from "recoil";
 import { Flex } from "@chakra-ui/react";
 import Modals from "@/components/modals";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { getQueryClient } from "@/client/queryClient";
+
 // import './globals.css'
 export const HeadMeta = () => {
   return (
@@ -39,12 +42,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const queryClient = getQueryClient();
+
   return (
     <html lang="en">
       <HeadMeta/>
       <body style={{minHeight: '100vh'}}>
       <RecoilRoot>
-        <Providers>
+        <QueryClientProvider  client={queryClient}>
+                  <Providers>
         <WagmiProviders>
           <Flex flexDir={'column'} minH={'100vh'}>
           <Header />
@@ -55,6 +61,8 @@ export default function RootLayout({
         
           </WagmiProviders>
         </Providers>
+        </QueryClientProvider>
+
         </RecoilRoot>
       </body>
     </html>
