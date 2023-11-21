@@ -2,19 +2,12 @@ import { Overlay_Index } from "@/types/style/overlayIndex";
 import {
   Flex,
   Text,
-  NumberInput,
-  NumberInputField,
   Tooltip,
   Input,
 } from "@chakra-ui/react";
-import { SetStateAction, useState } from "react";
-import BlueArrow from "@/assets/icons/blue_arrow.svg";
-import GrayArrow from "@/assets/icons/gray_arrow.svg";
 import UserGuide from "@/components/common/UserGuide";
-import Image from "next/image";
-import Select from "react-select";
 import DetailComponent from "./DetailComponent";
-import { PhoneIcon, QuestionIcon, QuestionOutlineIcon } from "@chakra-ui/icons";
+import { QuestionOutlineIcon } from "@chakra-ui/icons";
 
 const EconomyThree = (props: { question: any }) => {
   const { question } = props;

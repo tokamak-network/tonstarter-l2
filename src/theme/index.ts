@@ -11,6 +11,9 @@ const colors = {
   white: {
     100: "#FFF",
   },
+  blue: {
+    200:'#0070ED'
+  }
 };
 
 const fonts = {

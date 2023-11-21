@@ -26,9 +26,7 @@ const EconomySeven = (props: { question: any }) => {
   const { question } = props;
 
   const styles = `
-  input {
-    background-color: #252525 !important;
-  }
+ 
   .css-1kv3fcf {
     background-color: #191919 !important;
     right: -2px
