@@ -21,7 +21,7 @@ const ParticipateComponent = () => {
       <Flex flexDir={"column"} rowGap={'60px'} >
         {getPaginationData &&
           getPaginationData.map((data: any, index: number) => {
-            return <ProjectCard project={data} key={index} />;
+            return <ProjectCard project={data} key={index} isSocial={false}/>;
           })}
       </Flex>
       { starterData && getPaginationData.length < starterData.length &&  <Text mt={'90px'} onClick={() => setNumData(numData + 2)}>See more</Text> }

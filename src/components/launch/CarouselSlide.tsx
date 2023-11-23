@@ -1,4 +1,4 @@
-import { Flex, Text, Link } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import "font-proxima-nova/style.css";
 import UserGuide from "../common/UserGuide";
