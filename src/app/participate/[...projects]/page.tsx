@@ -10,11 +10,13 @@ import ProjectCard from "@/components/participate/ProjectCard";
 import TimelineComponent from "@/components/participate/TimelineComponent";
 import TokenEconomyComponent from "@/components/participate/TokenEconomyComponent";
 import ClaimScheduleChart from "@/components/participate/ClaimScheduleChart";
-const ProjectPage = (props: { params: any }) => {
+import TokenClaim from "@/components/participate/TokenClaim";
+import TierContainer from "@/components/participate/TierContainer";
+import Mockdata from  '@/components/participate/MOCK_TABLE.json'
+export default function ProjectPage(props: { params: any }) {
   const starterData = useFetchProjects();
-  const [saleInfo, setSaleInfo] = useState(undefined);
+  const [saleInfo, setSaleInfo] = useState<any>(undefined);
   const router = useRouter();
-
   useEffect(() => {
     const rawData = starterData;
     if (rawData) {
@@ -30,6 +32,7 @@ const ProjectPage = (props: { params: any }) => {
   return (
     <Flex
       mt={"60px"}
+      mb={'121px'}
       flexDir={"column"}
       color={"white"}
       alignItems={"center"}
@@ -104,17 +107,18 @@ const ProjectPage = (props: { params: any }) => {
           </Flex>
         </Flex>
         {saleInfo !== undefined && (
-          <Flex>
-            <TimelineComponent project={saleInfo} />
-            <TokenEconomyComponent project={saleInfo} />
-          
-          </Flex>
+          <Flex flexDir={"column"}>
+            <Flex>
+              <TimelineComponent project={saleInfo} />
+              <TokenEconomyComponent project={saleInfo} />
+            </Flex>
 
+            <ClaimScheduleChart />
+            <TokenClaim project={saleInfo} />
+            <TierContainer tierInfo={Mockdata.vaults[0].stosTier}/>
+          </Flex>
         )}
-        <ClaimScheduleChart/>
       </Flex>
     </Flex>
   );
-};
-
-export default ProjectPage;
+}

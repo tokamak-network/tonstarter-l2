@@ -6,7 +6,7 @@ export const metadata = {
     description: 'tonstarter l2 - launch'
 }
 
-const Participate = () => {
+export default function Participate  () {
 
     return (
         <Flex color={'white'}  style={{flex: 1}}>
@@ -15,4 +15,3 @@ const Participate = () => {
     )
 }
 
-export default Participate

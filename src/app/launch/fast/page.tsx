@@ -9,7 +9,7 @@ export const metadata = {
   description: "tonstarter l2 - launch",
 };
 
-const Fast = () => {
+export default function Fast ()  {
   return (
     <Flex
       flexDir={"column"}
@@ -36,4 +36,4 @@ const Fast = () => {
   );
 };
 
-export default Fast;
+

@@ -10,7 +10,7 @@ import { createStatus } from "@/recoil/launch/atom";
 import { useMemo } from "react";
 import "font-proxima-nova/style.css";
 
-const CreateProject = () => {
+export default function CreateProject() {
   const projectStep = useRecoilValue(createStatus);
 
   const getProjectStep = useMemo(() => {
@@ -45,6 +45,4 @@ const CreateProject = () => {
       </Flex>
     </Flex>
   );
-};
-
-export default CreateProject;
+}

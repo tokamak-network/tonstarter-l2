@@ -7,8 +7,6 @@ import Image from "next/image";
 const TimelineComponent = (props: { project: any }) => {
   const { project } = props;
   const now = getTime(new Date());
-  console.log(now, project.endDepositTime * 1000 + 100000000000);
-
   const timelineSteps = [
     {
       stepName: "Snapshot",
