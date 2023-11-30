@@ -27,7 +27,7 @@ type Vault = {
   color: string;
   value: number;
 };
-const EconomyFour = (props: { question: any }) => {
+const EconomyCarouselFour = (props: { question: any }) => {
   const { question } = props;
   const [defaultStatus, setDefaultStatus] = useState("1");
   const [modalType, setModalType] = useRecoilState(modalStatus)
@@ -232,4 +232,5 @@ const EconomyFour = (props: { question: any }) => {
   );
 };
 
-export default EconomyFour;
+export default EconomyCarouselFour;
+

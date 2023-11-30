@@ -9,7 +9,7 @@ import UserGuide from "@/components/common/UserGuide";
 import DetailComponent from "./DetailComponent";
 import { QuestionOutlineIcon } from "@chakra-ui/icons";
 
-const EconomyThree = (props: { question: any }) => {
+const EconomyCarouselThree = (props: { question: any }) => {
   const { question } = props;
 
   return (
@@ -76,4 +76,5 @@ const EconomyThree = (props: { question: any }) => {
   );
 };
 
-export default EconomyThree;
+export default EconomyCarouselThree;
+

@@ -2,12 +2,12 @@
 import { Flex, Text, Button } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
 import EconomyCarouselOne from "./EconomyCarouselOne";
-import EconomyTwo from "./EconomyTwo";
-import EconomyThree from "./EconomyThree";
-import EconomyFive from "./EconomyFive";
-import EconomyFour from "./EconomyFour";
-import EconomySix from "./EconomySix";
-import EconomySeven from "./EcnomySeven";
+import EconomyCarouselTwo from "./EconomyCarouselTwo";
+import EconomyCarouselThree from "./EconomyCarouselThree";
+import EconomyCarouselFive from "./EconomyCarouselFive";
+import EconomyCarouselFour from "./EconomyCarouselFour";
+import EconomyCarouselSix from "./EconomyCarouselSix"; 
+import EconomyCarouselSeven from "./EconomyCarouselSeven";
 import Image from "next/image";
 import activeArrow from "@/assets/icons/caret-down.png";
 import inactiveArrow from "@/assets/icons/caret-up.png";
@@ -77,17 +77,17 @@ const EconomyCarousel = () => {
       case 0:
         return <EconomyCarouselOne question={item} />;
       case 1:
-        return <EconomyTwo question={item} />;
+        return <EconomyCarouselTwo question={item} />;
       case 2:
-        return <EconomyThree question={item} />;
+        return <EconomyCarouselThree question={item} />;
       case 3:
-        return <EconomyFour question={item} />;
+        return <EconomyCarouselFour question={item} />;
       case 4:
-        return <EconomyFive question={item} />;
+        return <EconomyCarouselFive question={item} />;
       case 5:
-        return <EconomySix question={item} />;
+        return <EconomyCarouselSix question={item} />;
         case 6: 
-        return <EconomySeven question={item}/>
+        return <EconomyCarouselSeven question={item}/>
     }
   };
 

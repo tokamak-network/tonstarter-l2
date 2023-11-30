@@ -9,7 +9,8 @@ import { useState } from "react";
 import { useRecoilState } from "recoil";
 import VestingTable from "./VestingTable";
 import { modalStatus } from "@/recoil/launch/atom";
-const EconomySix = (props: { question: any }) => {
+
+const EconomyCarouselSix = (props: { question: any }) => {
   const { question } = props;
   const [defaultStatus, setDefaultStatus] = useState("1");
 
@@ -113,4 +114,5 @@ const EconomySix = (props: { question: any }) => {
   );
 };
 
-export default EconomySix;
+export default EconomyCarouselSix;
+

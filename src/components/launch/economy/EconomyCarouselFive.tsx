@@ -10,7 +10,8 @@ import { useState } from "react";
 import ClaimScheduleTable from "./ClaimScheduleTable";
 import {  modalStatus } from "@/recoil/launch/atom";
 import { useRecoilState } from "recoil";
-const EconomyFive = (props: { question: any }) => {
+
+const EconomyCarouselFive = (props: { question: any }) => {
   const { question } = props;
   const [defaultStatus, setDefaultStatus] = useState("1");
 const [modalType, setModalType] = useRecoilState(modalStatus)
@@ -119,4 +120,5 @@ return (
   );
 };
 
-export default EconomyFive;
+export default EconomyCarouselFive;
+
