@@ -1,7 +1,7 @@
 "use client";
 import { Flex, Text, Button } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
-import EconomyOne from "./EconomyOne";
+import EconomyCarouselOne from "./EconomyCarouselOne";
 import EconomyTwo from "./EconomyTwo";
 import EconomyThree from "./EconomyThree";
 import EconomyFive from "./EconomyFive";
@@ -75,7 +75,7 @@ const EconomyCarousel = () => {
   const getSlide = (index: number, item: any) => {    
     switch (index) {
       case 0:
-        return <EconomyOne question={item} />;
+        return <EconomyCarouselOne question={item} />;
       case 1:
         return <EconomyTwo question={item} />;
       case 2:

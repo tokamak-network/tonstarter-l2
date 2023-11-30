@@ -12,7 +12,7 @@ type SelectOption = {
   value: string;
 };
 
-const EconomyOne = (props: { question: any }) => {
+const EconomyCarouselOne = (props: { question: any }) => {
   const { question } = props;
   const customStyles = (isOpen: boolean, selectedOption: SelectOption) => {
     return {
@@ -238,5 +238,5 @@ const EconomyOne = (props: { question: any }) => {
   );
 };
 
-export default EconomyOne;
+export default EconomyCarouselOne;
 
