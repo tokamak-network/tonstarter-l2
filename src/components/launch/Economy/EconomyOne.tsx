@@ -239,3 +239,4 @@ const EconomyOne = (props: { question: any }) => {
 };
 
 export default EconomyOne;
+

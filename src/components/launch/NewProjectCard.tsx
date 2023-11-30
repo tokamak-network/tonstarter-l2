@@ -1,14 +1,19 @@
 import { Flex, Text, Box, Progress } from "@chakra-ui/react";
 import { theme } from "@/theme";
+import { useRouter } from "next/navigation";
 
 const NewProjectCard = () => {
+  const router = useRouter();
+
   return (
     <Flex
       w={"270px"}
       height={"100%"}
       flexDir={"column"}
       fontFamily={"Proxima Nova Rg"}
-      mt={"30px"}>
+      mt={"30px"}
+      cursor={'pointer'}
+      onClick={() => router.push('/launch/fast/createproject')}>
       <Flex
         w="270px"
         h={"190px"}
