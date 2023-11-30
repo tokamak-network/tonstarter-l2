@@ -1,11 +1,19 @@
 "use client";
 import { Flex, Text } from "@chakra-ui/react";
 import CarouselSlide from "./CarouselSlide";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const pathname = usePathname();
+  const subpath = pathname?.split("/")[2];
 
+  useEffect(() => {
+    if (subpath === "fast" || subpath === "custom") {
+      setActiveIndex(1);
+    } else setActiveIndex(0);
+  }, [subpath]);
   const items = [
     {
       title: "Runway",
@@ -100,4 +108,3 @@ const Carousel = () => {
 };
 
 export default Carousel;
-

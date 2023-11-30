@@ -10,3 +10,4 @@ export type ModalType =
   | "L2TokenStatus"
   | 'L1TokenStatus' 
   | 'Vault'
+  | 'SocialMedia'

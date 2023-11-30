@@ -81,7 +81,7 @@ const Header = () => {
   const { colorMode } = useColorMode();
   const router = useRouter();
   const pathname = usePathname();
-  
+ 
   const handleMenuToggle = (index: number) => {
     const updatedMenuStates = [...menuStates];
 

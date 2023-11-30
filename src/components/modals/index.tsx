@@ -9,6 +9,7 @@ import GasCheckModal from "./GasCheckModal";
 import L2ProjectTokenModal from "./L2ProjectTokenModal";
 import L1ProjectTokenModal from "./L1ProjectTokenModal";
 import VaultModal from "./VaultModal";
+import SocialMediaModal from "./SocialMediaModal";
 export default function Modals() {
   return (
     <>
@@ -23,6 +24,7 @@ export default function Modals() {
       <L2ProjectTokenModal/>
       <L1ProjectTokenModal/>
       <VaultModal/>
+      <SocialMediaModal/>
     </>
   );
 }

@@ -8,10 +8,15 @@ import Telegram from "@/assets/icons/ParticipateTelegram.svg";
 import Medium from "@/assets/icons/ParticipateMedium.svg";
 import Twitter from "@/assets/icons/ParticipateTwitter.svg";
 import Discord from "@/assets/icons/ParticipateDiscord.svg";
+import EditIcon from "@/assets/icons/EditWheel.svg";
+import { modalStatus } from "@/recoil/launch/atom";
+import { useRecoilState } from "recoil";
 
 const ProjectCard = (props: { project: any; isSocial: boolean }) => {
   const { project, isSocial } = props;
   const router = useRouter();
+  const [modalType, setModalType] = useRecoilState(modalStatus);
+  console.log("project", project);
 
   const ImageContainer = (props: { imageSrc: string }) => {
     const { imageSrc } = props;
@@ -191,6 +196,7 @@ const ProjectCard = (props: { project: any; isSocial: boolean }) => {
 
         {isSocial && (
           <Flex mt={"30px"} columnGap={"30px"}>
+          <Flex columnGap={"30px"}>
             {socialList.map((social: any, index: number) => {
               if (social.link !== "") {
                 return (
@@ -217,7 +223,20 @@ const ProjectCard = (props: { project: any; isSocial: boolean }) => {
                 );
               }
             })}
+           
           </Flex>
+           <Flex cursor={"pointer"} onClick={() => setModalType('SocialMedia')}>
+           <Image src={EditIcon} alt="EditIcon" height={20} width={20} />
+           <Text
+             ml={"6px"}
+             color={"#0070ED"}
+             fontSize={"15px"}
+             fontWeight={500}>
+             edit
+           </Text>
+         </Flex>
+         </Flex>
+
         )}
         <Flex w={"100%"} mt={isSocial ? "36px" : "54px"}>
           <Flex flexDir={"column"} width={"50%"}>
